@@ -1,0 +1,116 @@
+IDE<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>CRUD Empleados</title>
+<th:block th:insert="fragments/resources"></th:block>
+
+
+</head>
+<body data-ma-theme="blue">
+	<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+	
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Gestionar Chofer</h4>
+
+
+				<div class="form-row">
+					<div class="col-m-6">
+						<div class="form-group">
+							<a href="/chofer/nuevo" class="btn btn-primary">Nuevo chofer</a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>	
+		
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Lista de Choferes</h4>
+				
+				<div class="table-responsive">
+					<table id="idtablachofer" class="table table-bordered">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Apellido</th>
+								<th>Número de Permiso</th>
+								<th>Télefono</th>
+								<th>Email</th>
+							</tr>
+
+						</thead>
+						<tbody>
+							<th:block th:each="chofer : ${choferes}">
+								<tr>
+									<td th:text="${chofer.idChofer}"></td>
+									<td th:text="${chofer.nombreChofer}"></td>
+									<td th:text="${chofer.apellidoChofer}"></td>
+									<td th:text="${chofer.numeroPermiso}"></td>
+									<td th:text="${chofer.telefono}"></td>
+									<td th:text="${chofer.email}"></td>
+									<td>
+										<a class="btn btn-primary" th:href="@{/chofer/editar/{idChofer}(idChofer=${chofer.idChofer})}">
+											<i class="zmdi zmdi-edit zmdi-hc-fw"></i>
+										</a>
+									
+									
+										<a class="btn btn-danger" href="#" th:onclick="'eliminarChofer(' + ${chofer.idChofer} + ')'">
+											<i class="zmdi zmdi-delete zmdi-hc-fw"></i>
+										</a>
+									
+									
+									</td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>	
+	
+	</section>
+	
+	
+	<script type="text/javascript">
+		
+		$(document).ready( function () {
+        $('#idtablachofer').DataTable();
+         } );
+		
+		
+		function eliminarChofer(idChofer){
+			swal({
+                title: 'Are you sure?',
+                text: 'You will not be able to recover this imaginary file!',
+                type: 'warning',
+                showCancelButton: true,
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-danger',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonClass: 'btn btn-secondary'
+            }).then(function(result){
+            	if(result.value){
+					$.ajax({
+						url: "/chofer/eliminar/" + idChofer,
+						type: "GET",
+						success: function(){
+                			swal("Ok", "Se ha eliminado", "success").then(function(){
+                				window.location = "/chofer";
+                            });
+                		}
+					})
+            	}
+			});
+
+		}
+	</script>
+	
+</body>
+</html>
