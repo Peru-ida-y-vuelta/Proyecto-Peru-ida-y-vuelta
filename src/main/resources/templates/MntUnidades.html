@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="principal :: head">
+		
+</head>
+<body>
+<a href="/unidades/crear" class="btn btn-success">Agregar Unidad</a>
+<h1>Lista de Unidades</h1>
+   <table class="table">
+  <thead>
+    <tr>
+      <th >Id de la Unidad</th>
+      <th >Detalle</th>
+      <th >Fecha de Compra</th>
+      <th >Placa</th>
+      <th ></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr th:each="u : ${lstUnidad}">
+   	  <td th:text = "${u.id}"></td>
+   	  <td th:text = "${u.nom}"></td>
+      <td th:text= "${u.fecha}"></td>
+      <td th:text = "${u.placa}"></td>
+      <td>
+      		<form action="/unidades/editar" method="post">
+      			<input type="hidden" name="id" th:value="${u.id}">
+      			<button type="submit" class="btn btn-info">Editar</button>
+      		</form>
+      </td>
+      <td>
+      		<form action="/unidades/eliminar" method="post">
+      			<input type="hidden" name="id" th:value="${u.id}">
+      			<button type="submit" class="btn btn-danger">Eliminar</button>
+      		</form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<footer th:replace="Principal :: footer">
+   </footer>
+</body>
+</html>

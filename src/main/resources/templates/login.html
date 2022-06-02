@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="principal :: head">
+		
+</head>
+<body>
+
+<div class="row mt-4">
+<div class="col-sm-4 offset-sm-4">
+   	<h1>Acceso al sistema</h1>
+   	<form action="/login/validar" method="post" th:object = "${usuario}">
+  <div class="form-group">
+    <label for="inputUsuario">Usuario</label>
+    <input type="email" th:field="*{correo}"
+     class="form-control" id="inputUsuario" 
+     placeholder="Ingrese Usuario correcto">
+  </div>
+  <div class="form-group">
+    <label for="inputClave">Clave</label>
+    <input type="password" th:field="*{clave}"
+    class="form-control" id="inputClave" placeholder="Ingrese contraseña">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Ingresar</button> 
+</form>
+<br />
+
+<div class="alert alert-danger" th:if="${mensaje} != null" th:text="${mensaje}"></div>
+	<p>Si no tiene cuenta, registrate <a href="/usuarios/cargar">Aqui</a></p>
+   </div>
+   </div>
+   
+   <footer th:replace="Principal :: footer">
+   </footer>
+</body>
+</html>
