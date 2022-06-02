@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="principal :: head">
+		
+</head>
+<body>
+
+   <div class="container">
+   	<h1>Registro de cuenta</h1>
+   	<form action="/usuarios/grabar" method="post" th:object = "${usuario}">
+   	
+  <div class="form-group">
+    <label for="inputName">Nombre :</label>
+    <input type="text" th:field="*{nom}"
+     class="form-control" id="inputName" placeholder="Ingrese su nombre">
+  </div>
+  
+  <div class="form-group">
+    <label for="inputApellido">Apellido :</label>
+    <input type="text" th:field="*{ape}"
+    class="form-control" id="inputApellido" placeholder="Ingrese su Apellido">
+  </div>
+  
+  <div class="form-group">
+    <label for="inputDireccion">Direccion :</label>
+    <input type="text" th:field="*{direc}"
+    class="form-control" id="inputDireccion" placeholder="Av.Colmena en Marte">
+  </div>
+  
+  <div class="form-group">
+    <label for="inputCelular">Celular :</label>
+    <input type="text" th:field="*{phone}"
+    class="form-control" id="inputCelular" placeholder="Ingrese un Celular">
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Correo</label>
+      <input type="email" th:field="*{correo}"
+      class="form-control" id="inputEmail4" placeholder="user@gmail.com">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Clave</label>
+      <input type="password" step="0.01" th:field="*{clave}"
+      class="form-control" id="inputPassword4" placeholder="Ingrese una Contraseña">
+    </div>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+<br />
+
+<div th:if="${success} != null" class="alert alert-success" th:text="${success}"></div>
+<div th:if="${error} != null"class="alert alert-danger" th:text="${error}"></div>
+
+<p>Si ya tiene cuenta, registrate <a href="/login/cargar">Aqui</a></p>
+<br />
+
+   </div>
+<footer th:replace="Principal :: footer">
+</footer>
+</body>
+</html>

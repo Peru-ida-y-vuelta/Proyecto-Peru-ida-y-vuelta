@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="principal :: head">
+		
+</head>
+<body>
+  <div class="container">
+   	<h1>Registro de Unidades</h1>
+   	<form action="/unidades/grabar" method="post" th:object = "${unidad}">
+   	
+  <div class="form-group">
+    <label for="inputFecha">Fecha de Compra :</label>
+    <input type="text" th:field="*{fecha}"
+     class="form-control" id="inputFecha" placeholder="YYYY-MM-DD">
+  </div>
+  
+  <div class="form-group">
+    <label for="inputDetalle">Detalle de Unidad :</label>
+    <input type="text" th:field="*{nom}"
+    class="form-control" id="inputDetalle" placeholder="Carro del año">
+  </div>
+  
+  <div class="form-group">
+    <label for="inputPlaca">placa :</label>
+    <input type="text" th:field="*{placa}"
+    class="form-control" id="inputPlaca" placeholder="Ingrese la Placa">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Crear Unidad</button>
+</form>
+<br />
+
+<div th:if="${error} != null"class="alert alert-danger" th:text="${error}"></div>
+   </div>
+
+
+<footer th:replace="Principal :: footer"></footer>
+</body>
+</html>

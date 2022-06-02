@@ -58,8 +58,9 @@ create table tb_usuario
 	apellidoUsu varchar(50),
 	direccionUsu varchar(200),
 	telefono varchar(20),
-	email varchar(50),
+	email varchar(50) unique,
 	idTipo int,
+	clave varchar(10)
 	foreign key (idTipo)references tb_tipousuario(idTipo)
 );
 
@@ -71,20 +72,27 @@ create table tb_reclamos
 	foreign key (idUsu)references tb_usuario(idUsu)
 );
 
-create table tb_chofer
-(
- idchofer int primary key GENERATED ALWAYS AS IDENTITY,
- nombrecho varchar(50),
- NumPermiso varchar(20)
-);
+
+/*cambio de id de la unidad al chofer*/
 
 create table tb_unidades
 (
 	idUnidades int primary key GENERATED ALWAYS AS IDENTITY,
-	idchofer int,
 	nombreUnidad varchar(50),
-	foreign key (idchofer)references tb_chofer(idchofer)
+	placaUnidad varchar(50) unique,
+	fechaCompra Date
 );
+
+create table tb_chofer
+(
+ idchofer int primary key GENERATED ALWAYS AS IDENTITY,
+ nombrecho varchar(50),
+ NumPermiso varchar(20),
+ idUnidades int,
+foreign key (idUnidades )references tb_unidades(idUnidades)
+);
+
+
 
 create table tb_bancos
 (
