@@ -18,11 +18,11 @@
    							<form action="/login/validar" method="post" th:object = "${usuario}">
   								<div class="form-group">
     								<label for="inputUsuario">Usuario</label>
-	    								<input type="email" th:field="*{email}"class="form-control" id="inputUsuario" placeholder="Ingrese Usuario correcto">
+	    								<input type="email" th:field="*{correo}"class="form-control" id="inputUsuario" placeholder="Ingrese Usuario correcto">
   								</div>
   							<div class="form-group">
     							<label for="inputClave">Clave</label>
-	    							<input type="password" th:field="*{clave}"class="form-control" id="inputClave" placeholder="Ingrese contrase&ntilde;a"></div>
+	    							<input type="password" th:field="*{clave}"class="form-control" id="inputClave" placeholder="Ingrese contraseña"></div>
   
   								<button type="submit" class="btn btn-primary">Ingresar</button> 
 							</form>

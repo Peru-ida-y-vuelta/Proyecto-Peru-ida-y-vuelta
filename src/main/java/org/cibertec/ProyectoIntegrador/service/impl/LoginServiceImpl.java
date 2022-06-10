@@ -13,12 +13,12 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired LoginRepository logRepo;
 	
 	@Override
-	public Usuario grabarUsu(Usuario usu) {
+	public Usuario grabar(Usuario usu) {
+		// TODO Auto-generated method stub
 		return logRepo.save(usu);
 	}
-
 	@Override
 	public Usuario ValidarLogin(String user, String pass) {
-		return logRepo.findByCorreoAndClave(user, pass);
+		return logRepo.findByEmailAndClave(user, pass);
 	}
 }

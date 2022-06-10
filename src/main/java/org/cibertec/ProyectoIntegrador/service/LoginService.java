@@ -6,7 +6,7 @@ import org.cibertec.ProyectoIntegrador.entidades.Usuario;
 public interface LoginService {
 
 
-	public Usuario grabarUsu(Usuario usu);
+	public Usuario grabar(Usuario usu) ;
 	
 	public Usuario ValidarLogin(String user,String pass);
 }

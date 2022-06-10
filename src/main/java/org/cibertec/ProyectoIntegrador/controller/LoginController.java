@@ -29,7 +29,7 @@ public class LoginController{
 	{
 		System.out.println("Enviado : " + usuario);
 		
-		Usuario u = logService.ValidarLogin(usuario.getCorreo(), usuario.getClave());
+		Usuario u = logService.ValidarLogin(usuario.getEmail(), usuario.getClave());
 		
 		System.out.println(u);
 		
@@ -40,23 +40,18 @@ public class LoginController{
 		}
 		return "dashboard";
 	}
-	
 	@GetMapping("/usuarios/cargar")
-	public String abrirRegistro(Model model) 
-	{
-		model.addAttribute("usuario",new Usuario());
-		
-		return "usuarios/registrarUsuario";
-	}
+    public String nuevoUsuario(Model model){
+    	model.addAttribute("usuario", new Usuario());
+    	return"usuarios/guardarUsuario";
+    }
 	
 	@PostMapping("/usuarios/grabar")
-	public String grabarRegistro(@Valid Usuario usuario, Errors error) 
-	{
-		if(error.hasErrors()) {
-    		return"usuarios/registrarUsuario";
+    public String registrarUsuario(@Valid Usuario usuario, Errors error) {//BindingResult bindingResult
+    	if(error.hasErrors()) {
+    		return"usuarios/guardarUsuario";
     	}
-		usuario.setTipo(1);
-		logService.grabarUsu(usuario);
-		return "login";
-	}
+    	logService.grabar(usuario);
+    	return"/";
+    }
 }

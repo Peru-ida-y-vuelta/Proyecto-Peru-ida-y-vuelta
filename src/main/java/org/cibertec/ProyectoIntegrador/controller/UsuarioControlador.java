@@ -3,7 +3,6 @@ package org.cibertec.ProyectoIntegrador.controller;
 
 import javax.validation.Valid;
 
-import org.cibertec.ProyectoIntegrador.entidades.Chofer;
 import org.cibertec.ProyectoIntegrador.entidades.Usuario;
 import org.cibertec.ProyectoIntegrador.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -18,18 +18,20 @@ public class Unidades {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_unidades")
-	private int id;
+	private int idUni;
+	
 	
 	@Column(name = "idchofer")
 	private int idchofer;
 	
 	
-	/*@Pattern(regexp = "[A-Za-z ]{5,}")*/
+	
 	@NotEmpty
 	@Column(name = "nombre_unidad")
-	private String nom;
+	private String nomUni;
 	
-	/*@Pattern(regexp = "{6}")*/
+	@NotEmpty
+	@Pattern(regexp = "{6}")
 	@Column(name = "placa_unidad",unique = true)
 	private String placa;
 }

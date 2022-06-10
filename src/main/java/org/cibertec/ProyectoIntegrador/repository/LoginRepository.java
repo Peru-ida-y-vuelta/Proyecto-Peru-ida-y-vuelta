@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface LoginRepository extends JpaRepository<Usuario, Integer>{
 
 	
-	Usuario findByCorreoAndClave(String user,String pass);
+	Usuario findByEmailAndClave(String user,String pass);
 }

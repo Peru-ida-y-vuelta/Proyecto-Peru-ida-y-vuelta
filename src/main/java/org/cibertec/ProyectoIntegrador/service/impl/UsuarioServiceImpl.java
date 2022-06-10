@@ -6,8 +6,10 @@ import org.cibertec.ProyectoIntegrador.entidades.Usuario;
 import org.cibertec.ProyectoIntegrador.repository.UsuarioRepositorio;
 import org.cibertec.ProyectoIntegrador.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService{
 
 	

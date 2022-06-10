@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import lombok.Data;
 
@@ -15,28 +18,39 @@ import lombok.Data;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usu")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int idUsu;
 	
 	@Column(name = "nombre_usu")
-	private String nom;
+	@Pattern(regexp = "[A-Za-z ]{2,}")
+	@NotEmpty
+	public String nombreUsu;
 	
 	@Column(name = "apellido_usu")
-	private String ape;
+	@Pattern(regexp = "[A-Za-z ]{2,}")
+	@NotEmpty
+	public String apellidoUsu;
 	
 	@Column(name = "direccion_usu")
-	private String direc;
+	@Pattern(regexp = "[A-Za-z ]{2,}")
+	@NotEmpty
+	public String direccionUsu;
 	
 	@Column(name = "telefono")
-	private String phone;
+	@NotEmpty
+	@Pattern(regexp = "(\\+51)?[ -]*(9)[ -]*([0-9][ -]*){8}")
+	public String telefono;
 	
 	@Column(name = "email")
-	private String correo;
+	@Email
+	@NotEmpty
+	public String email;
 	
 	@Column(name = "id_tipo")
-	private int tipo;
+	public int idTipo;
 	
+	@NotEmpty
 	@Column(name = "clave_usu")
 	private String clave;
 }
