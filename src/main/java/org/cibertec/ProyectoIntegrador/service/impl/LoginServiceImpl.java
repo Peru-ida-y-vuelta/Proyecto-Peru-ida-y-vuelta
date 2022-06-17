@@ -21,4 +21,8 @@ public class LoginServiceImpl implements LoginService{
 	public Usuario ValidarLogin(String user, String pass) {
 		return logRepo.findByEmailAndClave(user, pass);
 	}
+	@Override
+	public Usuario ValidarCorreo(String user) {
+		return logRepo.findByEmail(user);
+	}
 }

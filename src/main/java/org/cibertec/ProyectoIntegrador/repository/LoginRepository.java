@@ -8,4 +8,5 @@ public interface LoginRepository extends JpaRepository<Usuario, Integer>{
 
 	
 	Usuario findByEmailAndClave(String user,String pass);
+	Usuario findByEmail(String user);
 }

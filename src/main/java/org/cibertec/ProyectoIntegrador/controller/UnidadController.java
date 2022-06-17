@@ -2,20 +2,23 @@ package org.cibertec.ProyectoIntegrador.controller;
 
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.cibertec.ProyectoIntegrador.entidades.Chofer;
-import org.cibertec.ProyectoIntegrador.entidades.Unidades;
+import org.cibertec.ProyectoIntegrador.entidades.Unidad;
+import org.cibertec.ProyectoIntegrador.service.ChoferService;
 import org.cibertec.ProyectoIntegrador.service.UnidadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/unidad")
@@ -23,46 +26,65 @@ public class UnidadController {
 
 	@Autowired
 	UnidadService uniService;
+	@Autowired
+	ChoferService choService;
+	 
+	@GetMapping("/")
+	public String listarUnidades(Model model) {
+		model.addAttribute("unidades", uniService.listarUnidad());
+		return "/unidad/listarunidad";
+	}
 	
-	 @GetMapping
-	    public ModelAndView listarUnidades() {
-	  	return new ModelAndView("unidad/listarunidad").addObject("unidades", uniService.listarUnidad());
+	@GetMapping("/crear")
+	public String crearUnidad(Model model) {
+		model.addAttribute("unidad", new Unidad());
+		model.addAttribute("choferes", choService.listarChofer());
+		return "/unidad/guardarunidad";
+	}
+	@PostMapping("/grabar")
+	public String grabarUnidad(@Valid @ModelAttribute Unidad unidad,BindingResult result,Model model) {
+		List<Chofer> choferes = choService.listarChofer();
+
+		if (result.hasErrors()) {
+			model.addAttribute("choferes", choService.listarChofer());
+			return "/unidad/guardarunidad";
 		}
-	 
-	 @GetMapping("/nuevo")
-	    public String nuevaUnidad(Model model){
-	    	model.addAttribute("unidad", new Unidades());
-	    	return"unidad/guardarUnidad";
-	    }
-	 
-	 @GetMapping("/eliminar/{id}")
-	    public String eliminarUnidad(@ModelAttribute("id") int iduni) {
-	    	 uniService.eliminarUni(iduni);
-	    	return "redirect:/unidad";
-	    }
-	 
-	 @PostMapping("/crear")
-	    public String registrarUnidad(@Valid Unidades unidad, Errors error) {
-	    	if(error.hasErrors()) {
-	    		return"unidad/guardarunidad";
-	    	}
-	    	uniService.grabarUni(unidad);
-	    	return"redirect:/unidad";
-	    }
-	 
-	 @GetMapping("/editar/{id}")
-	    public String editarUnidad(Model model, @ModelAttribute("id") int id) {
-	        model.addAttribute("unidad", uniService.buscarUni(id));	
-	    	return "unidad/editarunidad";
-	    }
-	 
-	 @PostMapping("/actualizar")
-	    public String actualizarUnidad(@Valid Unidades uni, Errors error) {
-	    	
-	    	if(error.hasErrors()) {
-	    	    	return "unidad/editarunidad";
-	    	}
-	    	uniService.actualizarUni(uni);
-	    	return"redirect:/unidad";
-	    }
+		if (uniService.validaPlaca(unidad.getPlaca()) != null) {
+			model.addAttribute("validar", "Esta placa ya existe");
+			System.out.println("Placa existe");
+			model.addAttribute("choferes", choferes);
+			return "/unidad/guardarunidad";
+		}
+		uniService.grabarUni(unidad);
+		return "redirect:/unidad/";
+	}
+	@GetMapping("/editar/{id}")
+	public String editaUnidad(@PathVariable("id") Integer idUnidad,Model model) {
+		
+		List<Chofer> choferes = choService.listarChofer();
+		Unidad unidad = uniService.buscarUni(idUnidad);
+		model.addAttribute("unidad", unidad);
+		model.addAttribute("choferes", choferes);
+		
+		return "/unidad/editarunidad";
+	}
+	
+	@PostMapping("/actualizar")
+	public String actualizarUnidad(@Valid @ModelAttribute Unidad unidad,BindingResult result,Model model) {
+		List<Chofer> choferes = choService.listarChofer();
+
+		if (result.hasErrors()) {
+			model.addAttribute("choferes", choferes);
+			return "/unidad/guardarunidad";
+		}
+		
+		uniService.actualizarUni(unidad);
+		return "redirect:/unidad/";
+	}
+	
+	@GetMapping("/eliminar/{id}")
+    public String choferEliminar(@PathVariable("id") Integer idUnidad) {
+    	 uniService.eliminarUni(idUnidad);
+    	return "redirect:/unidad/";
+    }
 }

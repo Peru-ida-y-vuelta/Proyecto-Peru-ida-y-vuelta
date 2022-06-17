@@ -12,41 +12,48 @@
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Nuevo Unidad</h4>
-				<form id="idRegistrar" action="/unidad/crear" method="post" th:object="${unidad}">
+				
+				<form id="idRegistrar" action="/unidad/grabar" method="post" th:object="${unidad}">
 					<div class="form-row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="text" th:field="*{idchofer}" class="form-control" th:errorclass="'form-control alert-danger'"
-									placeholder="id del chofer">
-									<i class="form-group__bar"></i>
-                                    
-							</div>
+ 						<div class="col-md-6"> 
+ 							<div class="form-group"> 
+							 <select th:field="*{chofer}" class="form-control"> 
+								  <option th:each="c : ${choferes}" 
+ 								th:value="${c.idChofer}"
+								th:text="${c.nombreChofer}" /> 
+ 							</select> 
+ 							</div> 
 						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="text" th:field="*{nomUni}" class="form-control" th:errorclass="'form-control alert-danger'"
-									placeholder="Detalle de la Unidad" maxlength="50" name="detalle">
-									<i class="form-group__bar"></i>
-									<div class = "form-text text-danger" th:if= "${#fields.hasErrors('nomUni')}" th:errors="*{nomUni}" ></div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="text" th:field="*{placa}" class="form-control" th:errorclass="'form-control alert-danger'"
-									placeholder="Número de placa" maxlength="6">
-									<i class="form-group__bar"></i>
-									<div class = "form-text text-danger" th:if= "${#fields.hasErrors('placa')}" th:errors="*{placa}" ></div>
-							</div>
-						</div>
+						<div class="col-md-6"> 
+ 							<div class="form-group"> 
+ 								<input type="text" th:field="*{nomUni}" class="form-control"
+									placeholder="Detalle de la Unidad" maxlength="50" name="nomUni" id="nomUni"> 
+									 <small class="form-text text-danger" th:if="${#fields.hasErrors('nomUni')}"
+									th:errors="*{nomUni}"></small>
+						</div> 
+ 						</div> 
+						
+						<div class="col-md-6"> 
+ 							<div class="form-group"> 
+								<input type="text" th:field="*{placa}" class="form-control"
+									placeholder="Número de placa" maxlength="7"> 
+									 <small class="form-text text-danger" th:if="${#fields.hasErrors('placa')}"
+									th:errors="*{placa}"></small>
+									<small class="form-text text-danger" th:if="${validar != null}"
+									th:text="${validar}"></small>
+							</div> 
+ 						</div>
 					</div>
 					<div class="form-row">
 						<div class="col-md-12">
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">Registrar</button>
-								<a href="/unidad" class="btn btn-danger">Cancelar</a>
+								<a href="/unidad/" class="btn btn-danger">Cancelar</a>
 							</div>
 						</div>
 					</div>
+					
+					
 				</form>
 			</div>
 		</div>	

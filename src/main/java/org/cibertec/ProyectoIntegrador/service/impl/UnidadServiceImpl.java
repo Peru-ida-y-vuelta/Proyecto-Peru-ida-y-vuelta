@@ -2,8 +2,7 @@ package org.cibertec.ProyectoIntegrador.service.impl;
 
 import java.util.List;
 
-
-import org.cibertec.ProyectoIntegrador.entidades.Unidades;
+import org.cibertec.ProyectoIntegrador.entidades.Unidad;
 import org.cibertec.ProyectoIntegrador.repository.UnidadRepository;
 import org.cibertec.ProyectoIntegrador.service.UnidadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,33 +14,36 @@ public class UnidadServiceImpl implements UnidadService {
 
 	@Autowired
 	private UnidadRepository uniRepo;
-	
-	
+
 	@Override
-	@Transactional(readOnly = true)
-	public List<Unidades> listarUnidad() {
+	public List<Unidad> listarUnidad() {
 		return uniRepo.findAll();
 	}
 
 	@Override
-	public Unidades grabarUni(Unidades uni) {
-		return uniRepo.save(uni);
+	public Unidad grabarUni(Unidad obj) {
+		return uniRepo.save(obj);
 	}
 
 	@Override
-	public Unidades actualizarUni(Unidades uni) {
-		return uniRepo.save(uni);
+	public Unidad actualizarUni(Unidad obj) {
+		return uniRepo.save(obj);
 	}
 
 	@Override
 	public void eliminarUni(int id) {
 		uniRepo.deleteById(id);
-		
 	}
 
 	@Override
-	public Unidades buscarUni(int id) {
-		
-		return uniRepo.findById(id).get();
+	public Unidad buscarUni(int id) {
+		return uniRepo.findById(id).orElse(null);
 	}
+
+	@Override
+	public Unidad validaPlaca(String placa) {
+		return uniRepo.findByPlaca(placa);
+	}
+	
+	
 }

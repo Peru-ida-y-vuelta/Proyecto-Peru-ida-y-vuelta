@@ -47,11 +47,20 @@ public class LoginController{
     }
 	
 	@PostMapping("/usuarios/grabar")
-    public String registrarUsuario(@Valid Usuario usuario, Errors error) {//BindingResult bindingResult
+    public String registrarUsuario(@Valid Usuario usuario, Errors error,Model model) {
     	if(error.hasErrors()) {
     		return"usuarios/guardarUsuario";
     	}
+    	
+    	if (logService.ValidarCorreo(usuario.getEmail()) != null) {
+			model.addAttribute("validar", "Esta correo ya existe");
+			System.out.println("Correo existe");
+			return "usuarios/guardarUsuario";
+		}
+    	System.out.println(usuario);
+    	usuario.setIdTipo(1);
+    	System.out.println(usuario);
     	logService.grabar(usuario);
-    	return"/";
+    	return"redirect:/";
     }
 }

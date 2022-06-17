@@ -2,14 +2,15 @@ package org.cibertec.ProyectoIntegrador.service;
 
 import java.util.List;
 
-import org.cibertec.ProyectoIntegrador.entidades.Unidades;
+import org.cibertec.ProyectoIntegrador.entidades.Unidad;
 
 public interface UnidadService {
 
 	
-	public List<Unidades> listarUnidad();
-	public Unidades grabarUni(Unidades uni);
-	public Unidades actualizarUni(Unidades uni);
+	public List<Unidad> listarUnidad();
+	public Unidad grabarUni(Unidad obj);
+	public Unidad actualizarUni(Unidad obj);
 	public void eliminarUni(int id);
-	public Unidades buscarUni(int id);
+	public Unidad buscarUni(int id);
+	public Unidad validaPlaca(String placa);
 }

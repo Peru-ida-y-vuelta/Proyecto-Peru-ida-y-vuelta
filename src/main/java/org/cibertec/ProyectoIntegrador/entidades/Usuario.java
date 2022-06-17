@@ -23,27 +23,27 @@ public class Usuario {
 	public int idUsu;
 	
 	@Column(name = "nombre_usu")
-	@Pattern(regexp = "[A-Za-z ]{2,}")
+	@Pattern(regexp = "[A-Za-z ]{2,}",message = "El nombre debe tener almenos 2 caracteres y no tener numeros")
 	@NotEmpty
 	public String nombreUsu;
 	
 	@Column(name = "apellido_usu")
-	@Pattern(regexp = "[A-Za-z ]{2,}")
+	@Pattern(regexp = "[A-Za-z ]{2,}",message = "El apellido debe tener almenos 2 caracteres y no tener numeros")
 	@NotEmpty
 	public String apellidoUsu;
 	
 	@Column(name = "direccion_usu")
-	@Pattern(regexp = "[A-Za-z ]{2,}")
+	@Pattern(regexp = "[A-Za-z ]{2,}" ,message = "La dirección debe tener almenos 2 caracteres y no tener numeros")
 	@NotEmpty
 	public String direccionUsu;
 	
 	@Column(name = "telefono")
 	@NotEmpty
-	@Pattern(regexp = "(\\+51)?[ -]*(9)[ -]*([0-9][ -]*){8}")
+	@Pattern(regexp = "(\\+51)?[ -]*(9)[ -]*([0-9][ -]*){8}",message = "El telefono debe empezar con 9 y tener 9 digitos")
 	public String telefono;
 	
 	@Column(name = "email")
-	@Email
+	@Email(message = "El correo debe tener un @ y un .com")
 	@NotEmpty
 	public String email;
 	
