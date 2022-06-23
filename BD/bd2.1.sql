@@ -117,6 +117,18 @@ create table tb_detalle_boleta
 	foreign key (idBoleta)references tb_boleta(idBoleta)
 );
 
+create table tab_servicio_soporte
+(
+	idSoporte int primary key GENERATED ALWAYS AS IDENTITY,
+	id_usu int,
+	Detalle varchar(100),
+	foreign key (id_usu)references tb_usuario(id_usu)
+);
+
+INSERT INTO public.tab_servicio_soporte (id_usu,Detalle)
+	VALUES ('1','CLIENTE SE QUEJA DE UNA AVERIA EN UN CARRO');
+	
+
 INSERT INTO public.tb_tipousuario (nombretipo)
 	VALUES ('Cliente');
 	
