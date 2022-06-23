@@ -1,0 +1,160 @@
+package org.cibertec.ProyectoIntegrador.controller;
+
+import javax.validation.Valid;
+
+import org.cibertec.ProyectoIntegrador.entidades.Chofer;
+import org.cibertec.ProyectoIntegrador.entidades.Destino;
+import org.cibertec.ProyectoIntegrador.service.DestinoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+@RequestMapping("/destino")
+public class DestinoController {
+
+	@Autowired
+	DestinoService desService;
+	
+	 @GetMapping
+	    public ModelAndView listarDestinos() {
+	  	return new ModelAndView("destino/listardestino").addObject("destinos", desService.listarDestino());
+		}
+	 
+	 @GetMapping("/nuevo")
+	    public String nuevoDestino(Model model){
+	    	model.addAttribute("destino", new Destino());
+	    	return"destino/guardarDestino";
+	    }
+	 
+	 @GetMapping("/eliminar/{id}")
+	    public String eliminarDestino(@ModelAttribute("id") int iddes) {
+	    	 desService.eliminarDes(iddes);
+	    	return "redirect:/destino";
+	    }
+	 
+	 @PostMapping("/crear")
+	    public String registrarDestino(@Valid Destino destino, Errors error) {
+	    	if(error.hasErrors()) {
+	    		return"destino/guardardestino";
+	    	}
+	    	desService.grabarDes(destino);
+	    	return"redirect:/destino";
+	    }
+	 
+	 @GetMapping("/editar/{id}")
+	    public String editarDestino(Model model, @ModelAttribute("id") int id) {
+	        model.addAttribute("destino", desService.buscarDes(id));	
+	    	return "destino/editardestino";
+	    }
+      
+      
+    
+	 
+	 @PostMapping("/actualizar")
+	    public String actualizarDestino(@Valid Destino des, Errors error) {
+	    	
+	    	if(error.hasErrors()) {
+	    	    	return "destino/editardestino";
+	    	}
+	    	desService.actualizarDes(des);
+	    	return"redirect:/destino";
+	    }
+}
+
+
+
+
+
+package org.cibertec.ProyectoIntegrador.repository;
+
+import org.cibertec.ProyectoIntegrador.entidades.Destino;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface DestinoRepository extends JpaRepository<Destino, Integer> {
+
+}
+
+
+
+
+
+package org.cibertec.ProyectoIntegrador.service;
+
+import java.util.List;
+
+import org.cibertec.ProyectoIntegrador.entidades.Destino;
+
+public interface DestinoService {
+
+	public List<Destino> listarDestino();
+	public Destino grabarDes(Destino des);
+	public Destino actualizarDes(Destino des);
+	public void eliminarDes(int id);
+	public Destino buscarDes(int id);
+}
+
+
+
+package org.cibertec.ProyectoIntegrador.service.impl;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import org.cibertec.ProyectoIntegrador.entidades.Destino;
+import org.cibertec.ProyectoIntegrador.repository.DestinoRepository;
+import org.cibertec.ProyectoIntegrador.service.DestinoService;
+import org.springframework.transaction.annotation.Transactional;
+
+
+@Service
+public class DestinoServicelmpl implements DestinoService {
+
+	@Autowired
+	private DestinoRepository desRepo;
+	
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Destino> listarDestino() {
+		return desRepo.findAll();
+	}
+
+	@Override
+	public Destino grabarDes(Destino des) {
+		return desRepo.save(des);
+	}
+
+	@Override
+	public Destino actualizarDes(Destino des) {
+		return desRepo.save(des);
+	}
+
+	@Override
+	public void eliminarDes(int id) {
+		desRepo.deleteById(id);
+		
+	}
+
+	@Override
+	public Destino buscarDes(int id) {
+		
+		return desRepo.findById(id).get();
+	}
+}
+
+
+
+
+
