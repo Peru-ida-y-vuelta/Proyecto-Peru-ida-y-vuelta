@@ -39,7 +39,7 @@
 							<th:block th:each="spt : ${soportes}">
 								<tr>
 									<td th:text="${spt.idSoporte}"></td>
-									<td th:text="${spt.id_usu}"></td>
+									<td th:text="${spt.idUsuario}"></td>
 									<td th:text="${spt.Detalle}"></td>
 									<td>
 										<a class="btn btn-primary" th:href="@{/soporte/editar/{id}(id=${spt.idSoporte})}">
@@ -61,37 +61,6 @@
 	</section>
 	
 	
-	<script type="text/javascript">
-		$(document).ready( function () {
-        $('#idtablaUnidad').DataTable();
-         } );
-		
-		function eliminarUnidad(id){
-			swal({
-                title: 'Estas Seguro?',
-                text: 'YSe eliminara esta Unidad definitivamente!',
-                type: 'warning',
-                showCancelButton: true,
-                buttonsStyling: false,
-                confirmButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Si,Eliminar!',
-                cancelButtonClass: 'btn btn-secondary',
-                cancelButtonText: 'Cancelar'
-            }).then(function(result){
-            	if(result.value){
-					$.ajax({
-						url: "/unidad/eliminar/" + id,
-						type: "GET",
-						success: function(){
-                			swal("Ok", "Se ha eliminado", "success").then(function(){
-                				window.location = "/unidad/";
-                            });
-                		}
-					})
-            	}
-			});
 
-		}
-	</script>
 </body>
 </html>

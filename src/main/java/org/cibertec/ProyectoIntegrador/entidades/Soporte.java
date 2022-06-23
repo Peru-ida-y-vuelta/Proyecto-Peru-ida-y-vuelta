@@ -16,14 +16,16 @@ import lombok.Data;
 @Table(name="tab_servicio_soporte")
 public class Soporte {
 	@Id
-	@Column(name="idSoporte")
+	@Column(name="idsoporte")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSoporte;
+	
 	@Column(name="id_usu")
 	@Pattern(regexp="")
 	@NotEmpty
 	private int idUsuario;
-	@Column(name="Detalle")
+	
+	@Column(name="detalle")
 	@Pattern(regexp="")
 	@NotEmpty
 	private String Detalle;
