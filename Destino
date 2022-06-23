@@ -1,0 +1,31 @@
+package org.cibertec.ProyectoIntegrador.entidades;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name = "tb_viajes")
+public class Destino {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idViaje")
+	private int idDestino;
+	
+	@Column(name = "codigotv")
+	private int codigo;
+	
+	@Column(name = "nplazas ")
+	private int plazas;
+
+}
