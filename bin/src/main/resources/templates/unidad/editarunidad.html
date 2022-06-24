@@ -5,8 +5,7 @@
 <title>Editar Unidades</title>
 <th:block th:insert="fragments/resources"></th:block>
 </head>
-<body>
-<body data-ma-theme="blue">
+<body data-ma-theme="red">
 	<th:block th:insert="fragments/header"></th:block>
 	<th:block th:insert="fragments/menu"></th:block>
 	<section class="content">
@@ -54,5 +53,11 @@
 	
 	</section>
 </body>
-</body>
+ <style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://img.freepik.com/foto-gratis/autobus-enlace-negro-vuelta-carretera-polonia-trafico-transporte-publico-moderno-unidad-verano-alquiler-vehiculos-autocar-viaje-vacaciones-viaje-vacaciones-recreacion-movimiento-paseo-urbano_250132-1244.jpg?w=1380') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
 </html>

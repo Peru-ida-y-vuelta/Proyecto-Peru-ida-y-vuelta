@@ -36,7 +36,7 @@ public class Reserva implements Serializable{
 	private int idRsv;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "fechaReserva")
+	@Column(name = "fecha_Reserva")
     private LocalDate 	fechaRsv;
 	
 	@OneToOne

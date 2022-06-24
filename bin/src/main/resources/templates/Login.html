@@ -5,35 +5,29 @@
 <title>Perú ida y vuelta</title>
 <th:block th:insert="fragments/resources"></th:block>
 </head>
-<body>
-<body data-ma-theme="blue">
-	<th:block th:insert="fragments/header"></th:block>
-	<section class="content">
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Acceso al sistema</h4>
-				
-					<div class="row mt-4">
-						<div class="col-sm-4 offset-sm-4">
-   							<form action="/login/validar" method="post" th:object = "${usuario}">
-  								<div class="form-group">
-    								<label for="inputUsuario">Usuario</label>
-	    								<input type="email" th:field="*{email}"class="form-control" id="inputUsuario" placeholder="Ingrese Usuario correcto">
-  								</div>
-  							<div class="form-group">
-    							<label for="inputClave">Clave</label>
-	    							<input type="password" th:field="*{clave}"class="form-control" id="inputClave" placeholder="Ingrese contraseña"></div>
-  
-  								<button type="submit" class="btn btn-primary">Ingresar</button> 
-							</form>
-							<br />
-
-							<div class="alert alert-danger" th:if="${mensaje} != null" th:text="${mensaje}"></div>
-								<p>Si no tiene cuenta, registrate <a href="/usuarios/cargar">Aqui</a></p>
-   						</div>
-   					</div>
-			</div>
-		</div>	
-	</section>
+<body class="body">
+ <div class="login-container">
+          <div class="login-info-container">
+            <h1 class="title">Viaja con Perú ida y vuelta</h1>
+            <form action="/login/validar" method="post" th:object="${usuario}" class="inputs-container">
+            
+         
+                
+                <input type="email" class="input" placeholder="Ingrese su correo" th:field=*{email}>
+                
+                <input type="password" class="input" placeholder="Ingresa tu Contraseña" th:field=*{clave}>
+                
+                
+                
+                <button class="bu">Ingresar</button>
+                <p style="color: white;">No tienes Cuenta ? <span class="span"><a href="/usuarios/cargar">Crear</a></span></p>
+            </form>
+            
+            <div class="alert alert-danger" th:if="${mensaje} != null"
+			th:text="${mensaje}"></div>
+            
+          </div>
+            <img class="image-container" src="../img/logo.png" alt="">
+      </div>
 </body>
 </html>
