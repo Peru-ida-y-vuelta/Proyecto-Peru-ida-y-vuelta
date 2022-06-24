@@ -1,12 +1,20 @@
 <aside class="sidebar">
 
-	<div class="scrollbar-inner">
+<!-- Se agrego  style="background-color: White; opacity:.8;  font-weight:
+bold;"  en el DIV -->
+
+	<div   style="background-color: White; opacity:.8;  font-weight:
+bold;"   class="scrollbar-inner">
 
 		<div class="user">
 
 			<div class="user__info" data-toggle="dropdown">
-
-				<img class="user__img" th:src="@{/demo/img/profile-pics/8.jpg}" alt="">
+			
+			<!-- Se cambio la imagen por otra -->
+				
+				<img  width="45px" src="https://img.icons8.com/stickers/344/traffic-jam.png"  >
+				
+				
 
 				<div>
 
@@ -30,7 +38,7 @@
 
 					class="dropdown-item" href="">Settings</a> <a class="dropdown-item"
 
-					th:href="@{/logout}">Cerrar sesi&oacute;n</a>
+					href="/">Cerrar sesi&oacute;n</a>
 
 			</div>
 
@@ -38,20 +46,55 @@
 
 
 
-		<ul class="navigation">
+		<ul  class="navigation">
 
-			<li><a href="/"><i class="zmdi zmdi-home"></i> Inicio</a></li>
+			<li><a href="/Inicio">
+			
+			<!-- Se agrego imagen -->
+			<img  width="30px"
+			 src="https://img.icons8.com/external-victoruler-solid-victoruler/344/external-mansion-buildings-victoruler-solid-victoruler.png" >
+			
+         Inicio</a></li>
 
 
-
-			<li><a href="/chofer"><i class="zmdi zmdi-account-o"></i>
-
+			<li><a href="/chofer">
+			<!-- Se agrego imagen -->
+			<img  width="30px"
+			 src="https://img.icons8.com/ios-filled/344/driver.png" >
 					Chofer</a></li>
 					
-			<li><a href="/unidad"><i class="zmdi zmdi-account-o"></i>
+			<li><a href="/unidad/">
+			
+			<!-- Se agrego imagen -->
+			
+			<img  width="30px"
+			 src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/344/external-bus-transportation-smashingstocks-glyph-smashing-stocks-2.png" >
 
 					Unidades</a></li>
 
+			<li><a href="/usuario">
+			
+			<!-- Se agrego imagen -->
+			<img  width="30px"
+			 src="https://img.icons8.com/ios-filled/344/checked-user-male.png" >
+  
+					Usuario</a></li>
+					
+			<li><a href="/destino">
+			
+			<!-- Se agrego imagen -->
+			<img  width="30px"
+			 src="https://img.icons8.com/ios-filled/344/worldwide-location--v1.png" >
+		
+					Destinos</a></li>
+					
+							
+			<li><a href="/reserva/">
+			
+			<!-- Se agrego imagen -->
+			<img  width="30px" src="https://img.icons8.com/pastel-glyph/344/--rolling-luggage--v1.png" >
+
+					Reservas</a></li>
 		</ul>
 		
 		

@@ -16,27 +16,22 @@
 
 
 				<form action="/unidad/actualizar" method="post" th:object="${unidad}">
-				    <input type="hidden" th:field="*{id}">
+				    <input type="hidden" th:field="*{idUni}">
+				    <input type="hidden" th:field="*{placa}"/>
 					<div class="form-row">
 						<div class="col-md-6">
-							<div class="form-group">
-								<input type="text" th:field="*{idchofer}" class="form-control"
-									placeholder="idChofer" maxlength="50">
-									<i class="form-group__bar"></i>
-							</div>
+							<select th:field="*{chofer}" class="form-control"> 
+								  <option th:each="c : ${choferes}" 
+ 								th:value="${c.idChofer}"
+								th:text="${c.nombreChofer}" /> 
+ 							</select> 
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" th:field="*{nom}" class="form-control"
+								<input type="text" th:field="*{nomUni}" class="form-control"
 									placeholder="Detalle de la unidad" maxlength="100">
 									<i class="form-group__bar"></i>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="text" th:field="*{placa}" class="form-control"
-									placeholder="Número de placa" maxlength="6">
-									<i class="form-group__bar"></i>
+									 <div class = "form-text text-danger" th:if= "${#fields.hasErrors('nomUni')}" th:errors="*{nomUni}" ></div>
 							</div>
 						</div>
 					</div>
@@ -44,7 +39,7 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">Actualizar</button>
-								<a href="/unidad" class="btn btn-danger">Cancelar</a>
+								<a href="/unidad/" class="btn btn-danger">Cancelar</a>
 							</div>
 						</div>
 					</div>
