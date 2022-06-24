@@ -16,7 +16,7 @@
 				<div class="form-row">
 					<div class="col-m-6">
 						<div class="form-group">
-							<a href="/soporte/insertar" class="btn btn-primary">Nueva Solicitud</a>
+							<a href="/soporte/nuevo" class="btn btn-primary">Nueva Solicitud</a>
 						</div>
 					</div>
 				</div>
@@ -39,7 +39,7 @@
 							<th:block th:each="spt : ${soportes}">
 								<tr>
 									<td th:text="${spt.idSoporte}"></td>
-									<td th:text="${spt.idUsuario}"></td>
+									<td th:text="${spt.usuario.nombreUsu}"></td>
 									<td th:text="${spt.Detalle}"></td>
 									<td>
 										<a class="btn btn-primary" th:href="@{/soporte/editar/{id}(id=${spt.idSoporte})}">
@@ -59,7 +59,38 @@
 			</div>
 		</div>	
 	</section>
-	
+		<script type="text/javascript">
+		$(document).ready( function () {
+        $('#idtablaSoporte').DataTable();
+         } );
+		
+		function eliminarSoporte(id){
+			swal({
+                title: 'Estas Seguro?',
+                text: 'Se eliminara el Detalle del soporte',
+                type: 'warning',
+                showCancelButton: true,
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-danger',
+                confirmButtonText: 'Si,Eliminar!',
+                cancelButtonClass: 'btn btn-secondary',
+                cancelButtonText: 'Cancelar'
+            }).then(function(result){
+            	if(result.value){
+					$.ajax({
+						url: "/soporte/eliminar/" + id,
+						type: "GET",
+						success: function(){
+                			swal("Ok", "Se ha eliminado", "success").then(function(){
+                				window.location = "/soporte";
+                            });
+                		}
+					})
+            	}
+			});
+
+		}
+	</script>
 	
 
 </body>

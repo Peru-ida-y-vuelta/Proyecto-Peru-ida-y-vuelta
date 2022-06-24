@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -20,13 +22,12 @@ public class Soporte {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSoporte;
 	
-	@Column(name="id_usu")
-	@Pattern(regexp="")
-	@NotEmpty
-	private int idUsuario;
+	@ManyToOne
+	@JoinColumn(name = "id_usu")
+	private Usuario usuario;
 	
 	@Column(name="detalle")
-	@Pattern(regexp="")
+	@Pattern(regexp = "[A-Za-z ]{2,}")
 	@NotEmpty
 	private String Detalle;
 }
