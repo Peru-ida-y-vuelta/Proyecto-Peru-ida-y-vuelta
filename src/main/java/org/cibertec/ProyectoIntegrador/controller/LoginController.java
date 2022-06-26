@@ -3,6 +3,7 @@ package org.cibertec.ProyectoIntegrador.controller;
 import javax.validation.Valid;
 
 import org.cibertec.ProyectoIntegrador.entidades.Chofer;
+import org.cibertec.ProyectoIntegrador.entidades.TipoUsuario;
 import org.cibertec.ProyectoIntegrador.entidades.Usuario;
 import org.cibertec.ProyectoIntegrador.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,10 @@ public class LoginController{
 			return "usuarios/guardarUsuario";
 		}
     	System.out.println(usuario);
-    	usuario.setIdTipo(1);
+    	
+    	TipoUsuario t = new TipoUsuario();
+    	t.setId(1);
+    	usuario.setTipo(t);
     	System.out.println(usuario);
     	logService.grabar(usuario);
     	return"redirect:/";
