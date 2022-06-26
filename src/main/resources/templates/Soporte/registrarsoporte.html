@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!--<meta charset="ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<title>Soporte</title>
+<th:block th:insert="fragments/resources"></th:block>
+</head>
+<body data-ma-theme="blue">
+		<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+	
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Nuevo Detalle de soporte</h4>
+
+
+				<form id="idRegistrar" action="/soporte/insertar" method="post" th:object="${soporte}">
+					<div class="form-row">
+							<div class="col-md-6"> 
+ 							<div class="form-group"> 
+							 <select th:field="*{usuario}" class="form-control">
+							 <option value="-1">Seleccione</option> 
+								  <option th:each="u : ${listarusuario}" 
+ 								th:value="${u.idUsu}"
+								th:text="${u.nombreUsu}" /> 
+ 							</select> 
+ 							</div> 
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" th:field="*{detalle}" class="form-control" th:errorclass="'form-control alert-danger'"
+									placeholder="detalle" maxlength="50" name="detalle">
+									<i class="form-group__bar"></i>
+									 <div class = "form-text text-danger" th:if= "${#fields.hasErrors('detalle')}" th:errors="*{detalle}" ></div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="form-row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Registrar</button>
+								<a href="/soporte" class="btn btn-danger">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				
+				
+				</form>
+				
+			</div>
+			
+		</div>	
+		
+	
+	</section>
+</body>
+ 
+    
+</html>
