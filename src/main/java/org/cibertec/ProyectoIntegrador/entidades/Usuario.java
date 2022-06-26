@@ -52,7 +52,6 @@ public class Usuario {
 	private String email;
 	
 	@OneToOne
-	@JsonIgnore
 	@JoinColumn(name = "id_tipo")
 	private TipoUsuario tipo;
 	
