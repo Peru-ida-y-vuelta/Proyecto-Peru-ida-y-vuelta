@@ -3,6 +3,7 @@ package org.cibertec.ProyectoIntegrador.controller;
 
 import javax.validation.Valid;
 
+import org.cibertec.ProyectoIntegrador.entidades.TipoUsuario;
 import org.cibertec.ProyectoIntegrador.entidades.Usuario;
 import org.cibertec.ProyectoIntegrador.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +59,12 @@ public class UsuarioControlador {
     }
 	
 	 @PostMapping("/actualizar")
-	public String actualizarUsuario(@Valid Usuario usu, Errors error) {	    	
+	public String actualizarUsuario(@Valid Usuario usu, Errors error) {	  
+		 TipoUsuario t = new TipoUsuario();
+	    	t.setId(1);
+	    	usu.setTipo(t);
 	    	if(error.hasErrors()) {
+	    		System.out.println(usu);
 	    	    	return "usuario/editarusuario";
 	    	}
 	    	usuarioService.actualizar(usu);

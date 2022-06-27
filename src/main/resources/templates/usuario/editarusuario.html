@@ -17,6 +17,7 @@
 
 				<form action="/usuario/actualizar" method="post" th:object="${usuario}">
 				    <input type="hidden" th:field="*{idUsu}">
+				    <input type="hidden" th:field="*{email}">
 					<div class="form-row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -57,11 +58,11 @@
 						
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" th:field="*{email}" class="form-control"
-									placeholder="Email" maxlength="50">
-									<i class="form-group__bar"></i>
-									<div class = "form-text text-danger" th:if= "${#fields.hasErrors('email')}" th:errors="*{email}" ></div>
-
+								<input type="text" th:field="*{clave}" class="form-control"
+									placeholder="password" maxlength="50"> <i
+									class="form-group__bar"></i>
+								<div class="form-text text-danger"
+									th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}"></div>
 							</div>
 						</div>
 					</div>
