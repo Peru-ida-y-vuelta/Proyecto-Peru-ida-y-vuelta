@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Editar Unidades</title>
+<th:block th:insert="fragments/resources"></th:block>
+</head>
+<body>
+<body data-ma-theme="red">
+	<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Editar Reserva</h4>
+
+
+				<form action="/reserva/actualizar" method="post" th:object="${reserva}">
+				    <input type="hidden" th:field="*{idRsv}">
+				    
+				    <div class="form-row">
+						<div class="col-md-6">
+							<div class="form-group">
+							<label for="inputZip"><FONT COLOR="black">Fecha Reserva </FONT></label>
+								<input type="date" value="2022-06-22" 
+								  min="2022-06-22"  required="true"						
+								 th:field="*{fechaRsv}" class="form-control col-md-8" id="date" 
+								   th:errorclass="'form-control alert-danger'" name="date"
+									placeholder="Fecha de Reserva" maxlength="50">
+									<i class="form-group__bar"></i>
+							        <div class = "form-text text-danger" th:if= "${#fields.hasErrors('fechaRsv')}" th:errors="*{fechaRsv}" >
+						        </div>
+							</div>
+						</div>		
+							    
+				    
+					
+						<div class="col-md-6">
+						<div class="form-group">
+						<label for="inputAddress2"><FONT COLOR="black"> Salida </FONT></label>
+							<select th:field="*{tipoviaje}" class="form-control"> 
+								  <option th:each="tpv : ${tipoviajes}" 
+ 								th:value="${tpv.codigotpv}"
+								th:text="${tpv.salidatpv}" /> 					 
+ 							</select> 
+						</div>
+						</div>
+						
+						
+						
+						<div class="col-md-6">
+						<div class="form-group">
+						<label for="inputAddress2"><FONT COLOR="black"> Destino </FONT>
+						</label>
+							<select th:field="*{tipoviaje}" class="form-control"> 
+								  <option th:each="tpv : ${tipoviajes}" 
+ 								th:value="${tpv.codigotpv}"
+								th:text="${tpv.destinotpv}" /> 					 
+ 							</select> 
+						</div>
+						</div>
+						
+						
+						
+						<div class="col-md-6">
+						<div class="form-group">
+						<label for="inputAddress2"><FONT COLOR="black"> Duración </FONT></label>
+							<select th:field="*{tipoviaje}" class="form-control"> 
+								  <option th:each="tpv : ${tipoviajes}" 
+ 								th:value="${tpv.codigotpv}"
+								th:text="${tpv.duraciontpv}" /> 					 
+ 							</select> 
+						</div>
+						</div>
+						
+						
+						<div class="col-md-6">
+						<div class="form-group">
+						<label for="inputAddress2"><FONT COLOR="black"> Precio </FONT></label>
+							<select th:field="*{tipoviaje}" class="form-control"> 
+								  <option th:each="tpv : ${tipoviajes}" 
+ 								th:value="${tpv.codigotpv}"
+								th:text="${tpv.preciotpv}" /> 					 
+ 							</select> 
+						</div>
+	     			</div>				
+						
+					</div>
+					<div class="form-row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Actualizar</button>
+								<a href="/reserva/" class="btn btn-danger">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				
+				
+				</form>
+				
+			</div>
+			
+		</div>	
+		
+	
+	</section>
+</body>
+</body>
+
+<!-- ESTO SE AGREGO <STYLE></STYLE>  -->
+ <style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://images3.alphacoders.com/150/thumb-1920-150487.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
+
+
+</html>

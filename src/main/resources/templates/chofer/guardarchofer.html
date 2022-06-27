@@ -8,7 +8,7 @@
 <title>CRUD Chofer</title>
 <th:block th:insert="fragments/resources"></th:block>
 </head>
-<body data-ma-theme="blue">
+<body data-ma-theme="red">
 	<th:block th:insert="fragments/header"></th:block>
 	<th:block th:insert="fragments/menu"></th:block>
 	<section class="content">
@@ -81,6 +81,12 @@
 	
 	</section>
 </body>
- 
+  <style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://images3.alphacoders.com/272/thumb-1920-272267.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
     
 </html>

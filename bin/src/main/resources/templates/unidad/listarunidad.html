@@ -4,8 +4,12 @@
 <meta charset="ISO-8859-1">
 <title>Listar Unidades</title>
 <th:block th:insert="fragments/resources"></th:block>
+</style>
+
 </head>
-<body data-ma-theme="blue">
+
+
+<body data-ma-theme="red">
 	<th:block th:insert="fragments/header"></th:block>
 	<th:block th:insert="fragments/menu"></th:block>
 	<section class="content">
@@ -16,7 +20,7 @@
 				<div class="form-row">
 					<div class="col-m-6">
 						<div class="form-group">
-							<a href="/unidad/nuevo" class="btn btn-primary">Nueva Unidad</a>
+							<a href="/unidad/crear" class="btn btn-primary">Nueva Unidad</a>
 						</div>
 					</div>
 				</div>
@@ -30,26 +34,26 @@
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Id Chofer</th>
-								<th>Apellido</th>
+								<th>Nombre del Chofer</th>
 								<th>Detalle de la Unidad</th>
 								<th>Placa de la Unidad</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<th:block th:each="uni : ${unidades}">
 								<tr>
-									<td th:text="${uni.id}"></td>
-									<td th:text="${uni.idchofer}"></td>
-									<td th:text="${uni.nom}"></td>
+									<td th:text="${uni.idUni}"></td>
+									<td th:text="${uni.chofer.nombreChofer}"></td>
+									<td th:text="${uni.nomUni}"></td>
 									<td th:text="${uni.placa}"></td>
 									<td>
-										<a class="btn btn-primary" th:href="@{/unidad/editar/{id}(id=${uni.id})}">
+										<a class="btn btn-primary" th:href="@{/unidad/editar/{id}(id=${uni.idUni})}">
 											<i class="zmdi zmdi-edit zmdi-hc-fw"></i>
 										</a>
 									
 									
-										<a class="btn btn-danger" href="#" th:onclick="'eliminarUnidad(' + ${uni.id} + ')'">
+										<a class="btn btn-danger" href="#" th:onclick="'eliminarUnidad(' + ${uni.idUni} + ')'">
 											<i class="zmdi zmdi-delete zmdi-hc-fw"></i>
 										</a>
 									</td>
@@ -86,7 +90,7 @@
 						type: "GET",
 						success: function(){
                 			swal("Ok", "Se ha eliminado", "success").then(function(){
-                				window.location = "/unidad";
+                				window.location = "/unidad/";
                             });
                 		}
 					})
@@ -96,4 +100,11 @@
 		}
 	</script>
 </body>
+ <style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://img.freepik.com/foto-gratis/autobus-enlace-negro-vuelta-carretera-polonia-trafico-transporte-publico-moderno-unidad-verano-alquiler-vehiculos-autocar-viaje-vacaciones-viaje-vacaciones-recreacion-movimiento-paseo-urbano_250132-1244.jpg?w=1380') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
 </html>
