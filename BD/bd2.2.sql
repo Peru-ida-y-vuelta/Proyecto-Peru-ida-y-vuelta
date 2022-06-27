@@ -152,6 +152,17 @@ create table tb_detalle_boleta
 	foreign key (idBoleta)references tb_boleta(idBoleta)
 );
 
+create table tab_oferta
+(
+	idoferta int primary key GENERATED ALWAYS AS IDENTITY,
+	id_usu int,
+	descuento decimal(6,2),
+	foreign key (id_usu)references tb_usuario(id_usu)
+);
+
+INSERT INTO public.tab_oferta(id_usu,descuento)
+	VALUES ('1','100.50');
+
 INSERT INTO public.tb_tipo_usuario (nombre_tipo)
 	VALUES ('Cliente');
 	
