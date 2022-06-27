@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Crear Unidad</title>
+<title>Crear Reserva</title>
 <th:block th:insert="fragments/resources"></th:block>
 </head>
 <body data-ma-theme="red">
@@ -14,74 +14,114 @@
 				<h4 class="card-title">Nueva Reserva</h4>
 				
 				<form id="idRegistrar" action="/reserva/grabar" method="post" th:object="${reserva}">
-					<div class="form-row">
-						<div class="col-md-6">
-							<div class="form-group">
-							<label for="inputZip"><FONT COLOR="black">Fecha Reserva </FONT></label>
-								<input type="date" value="2022-06-22" 
-								  min="2022-06-22"  required="true"						
-								 th:field="*{fechaRsv}" class="form-control col-md-8" id="date" 
-								   th:errorclass="'form-control alert-danger'" name="date"
-									placeholder="Fecha de Reserva" maxlength="50">
-									<i class="form-group__bar"></i>
-							        <div class = "form-text text-danger" th:if= "${#fields.hasErrors('fechaRsv')}" th:errors="*{fechaRsv}" >
-						        </div>
-							</div>
-						</div>		
-							    
-				    
+				<div class="form-row">
+				
+				   <div class="col-md-6">
+						<div class="form-group">
+						<label for="tipoviaje"><FONT COLOR="black"> Origen </FONT></label>
+							<select  id="tipoviaje" class="form-control" th:field="*{tipoviaje}">
+							 <option th:value="-1" th:text="Seleccione..." ></option> 
+								  <option th:each="tpv : ${tipoviajes}" 
+ 								th:value="${tpv.codigotpv}"
+								th:text="${tpv.origen}" /> 					 
+ 							</select> 
+ 							<div "form-text text-danger" th:errorclass="'form-control alert-danger'"  th:if= "${#fields.hasErrors('tipoviaje')}" 
+ 							th:errors="*{tipoviaje}" ></div>
+ 							
+						</div>
+						</div>
+				
+				
+				 <div class="col-md-6">
+						<div class="form-group">
+						<label for="inputZip"><FONT COLOR="black"> Destino </FONT></label>
+							<select th:field="*{tipoviaje}" class="form-control">
+							 <option th:value="-1" th:text="Seleccione..." ></option> 
+								  <option th:each="tpv : ${tipoviajes}" 
+ 								th:value="${tpv.codigotpv}"
+								th:text="${tpv.destino}" /> 					 
+ 							</select> 
+ 							
+ 							<div "form-text text-danger" th:errorclass="'form-control alert-danger'"  th:if= "${#fields.hasErrors('tipoviaje')}" 
+ 							th:errors="*{tipoviaje}" ></div>
+ 							
+						</div>
+						</div>
+							
 					
-						<div class="col-md-6">
+						<div class="col-md-6"> 
+							<div class="form-group">
+							<label for="inputZip"><FONT COLOR="black">Salida </FONT></label>
+								<input type="date" value="2022-06-22" 
+								  min="2022-06-22" max="2025-01-28"					
+								 th:field="*{salida}" class="form-control" id="salida" 
+								   name="salida"placeholder="Salida" maxlength="50">
+									
+									<div "form-text text-danger" th:errorclass="'form-control alert-danger'"  th:if= "${#fields.hasErrors('salida')}" 
+ 							th:errors="*{salida}" ></div>
+									
+							    </div> 
+							</div>
+						
+					
+					        <div class="col-md-6">  
+							<div class="form-group"> 
+							<label for="inputZip"><FONT COLOR="black">Retorno </FONT></label>
+								<input type="date" value="2022-06-22" 
+								  min="2022-06-22" max="2025-01-28"  					
+								 th:field="*{retorno}" class="form-control" id="retorno" 
+								    name="retorno"
+									placeholder="Retorno"  maxlength="50" >	
+									
+									<div "form-text text-danger" th:errorclass="'form-control alert-danger'"  th:if= "${#fields.hasErrors('retorno')}" 
+ 							th:errors="*{retorno}" ></div>								
+							</div>  
+						</div>	
+						
+							    
+				    <div class="col-md-4">
+					<div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> Adultos </FONT></label>
+				        <input type="number" value="1"  class="form-control" id="number" 
+				            placeholder="Asientos Adultos" th:field="*{adultos}" maxlength="50">
+				            
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'"  th:if= "${#fields.hasErrors('adultos')}" 
+ 							th:errors="*{adultos}" ></div>		
+		      	    </div>	
+		      	    </div>	
+		      	    
+		      	     <div class="col-md-4">
+		      	    <div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> Niños </FONT></label>
+				        <input type="number" value="0" required="true" class="form-control" id="ninos" 
+				            placeholder="Asientos Niños" th:field="*{ninos}" maxlength="50" name="ninos">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('ninos')}" 
+ 							th:errors="*{ninos}" ></div>							
+		      	    </div>
+		      	    </div>	
+							
+						
+						<div class="col-md-4">
 						<div class="form-group">
-						<label for="inputAddress2"><FONT COLOR="black"> Salida </FONT></label>
-							<select th:field="*{tipoviaje}" class="form-control"> 
-								  <option th:each="tpv : ${tipoviajes}" 
- 								th:value="${tpv.codigotpv}"
-								th:text="${tpv.salidatpv}" /> 					 
- 							</select> 
-						</div>
-						</div>
-						
-						
-						
-						<div class="col-md-6">
-						<div class="form-group">
-						<label for="inputAddress2"><FONT COLOR="black"> Destino </FONT>
+						<label for="inputAddress2"><FONT COLOR="black"> Clase </FONT>
 						</label>
-							<select th:field="*{tipoviaje}" class="form-control"> 
-								  <option th:each="tpv : ${tipoviajes}" 
- 								th:value="${tpv.codigotpv}"
-								th:text="${tpv.destinotpv}" /> 					 
+							<select th:field="*{categoriareserva}" class="form-control"> 
+							<option th:value="-1" th:text="Seleccione..." ></option> 
+								  <option th:each="ctrsv : ${categoriareservas}" 
+ 								th:value="${ctrsv.codigo_ctersv}"
+								th:text="${ctrsv.clase}" /> 					 
  							</select> 
+ 							
+ 							<div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('categoriareserva')}" 
+ 							th:errors="*{categoriareserva}" ></div>		
 						</div>
-						</div>
-						
-						
-						
-						<div class="col-md-6">
-						<div class="form-group">
-						<label for="inputAddress2"><FONT COLOR="black"> Duración </FONT></label>
-							<select th:field="*{tipoviaje}" class="form-control"> 
-								  <option th:each="tpv : ${tipoviajes}" 
- 								th:value="${tpv.codigotpv}"
-								th:text="${tpv.duraciontpv}" /> 					 
- 							</select> 
-						</div>
-						</div>
-						
-						
-						<div class="col-md-6">
-						<div class="form-group">
-						<label for="inputAddress2"><FONT COLOR="black"> Precio </FONT></label>
-							<select th:field="*{tipoviaje}" class="form-control"> 
-								  <option th:each="tpv : ${tipoviajes}" 
- 								th:value="${tpv.codigotpv}"
-								th:text="${tpv.preciotpv}" /> 					 
- 							</select> 
-						</div>
-	     			</div>				
-						
+						</div>		
+							
 					</div>
+					<br/>
+					<br/>
 					<div class="form-row">
 						<div class="col-md-12">
 							<div class="form-group">

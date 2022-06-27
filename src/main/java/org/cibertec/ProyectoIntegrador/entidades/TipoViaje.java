@@ -33,21 +33,21 @@ public class TipoViaje implements Serializable {
 	@Column(name = "codigotv")
 	private int codigotpv;
 	
-	//@NotEmpty
-	@Column(name = "salida")
-	private String salidatpv;
+	@NotEmpty
+	@Column(name = "origen")
+	private String origen;
 	
-	//@NotEmpty
+	@NotEmpty
 	@Column(name = "destino")
-	private String  destinotpv;
+	private String  destino;
 	
 	
-	//@NotEmpty
+	/*@NotEmpty
 	@Column(name = "duracion")
 	private String  duraciontpv;
 	
 	@Column(name = "preciotv", precision = 10, scale = 2)
-	private BigDecimal preciotpv;
+	private BigDecimal preciotpv;  */
 	
 	/*public TipoViaje get() {
 		
