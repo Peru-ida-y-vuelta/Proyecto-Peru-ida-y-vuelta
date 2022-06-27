@@ -30,23 +30,25 @@
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Fecha de Reserva</th>
-								<th>Salida</th>
+								<th>Origen</th>
 								<th>Destino</th>
-								<th>Duración</th>
-								<th>Precio</th>
-								<th></th>
+								<th>Salida</th>
+								<th>Retorno</th>
+								<th>Clase</th>							
+								
 							</tr>
 						</thead>
 						<tbody>
 							<th:block th:each="reser : ${reservas}">
 								<tr>
 									<td th:text="${reser.idRsv}"></td>
-									<td th:text="${reser.fechaRsv}"></td>
-									<td th:text="${reser.tipoviaje.salidatpv}"></td>
-									<td th:text="${reser.tipoviaje.destinotpv}"></td>
-									<td th:text="${reser.tipoviaje.duraciontpv}"></td>
-									<td th:text="${reser.tipoviaje.preciotpv}"></td>
+									<td th:text="${reser.tipoviaje.origen}"></td>
+									<td th:text="${reser.tipoviaje.destino}"></td>
+									<td th:text="${reser.salida}"></td>
+									<td th:text="${reser.retorno}"></td>
+									<td th:text="${reser.categoriareserva.clase}"></td>
+									
+									
 									<td>
 										<a class="btn btn-primary" th:href="@{/reserva/editar/{id}(id=${reser.idRsv})}">
 											<i class="zmdi zmdi-edit zmdi-hc-fw"></i>

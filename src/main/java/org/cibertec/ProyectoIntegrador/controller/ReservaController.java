@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.cibertec.ProyectoIntegrador.entidades.CategoriaReserva;
 import org.cibertec.ProyectoIntegrador.entidades.Reserva;
 import org.cibertec.ProyectoIntegrador.entidades.TipoViaje;
+import org.cibertec.ProyectoIntegrador.service.CategoriaReservaService;
 import org.cibertec.ProyectoIntegrador.service.ReservaService;
 import org.cibertec.ProyectoIntegrador.service.TipoViajeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,75 +21,64 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.springframework.validation.Errors;
+
+
+
 @Controller
 @RequestMapping("/reserva")
 public class ReservaController {
 	
 	@Autowired
-	ReservaService reservaService;
+	private ReservaService reservaService;
 	@Autowired
 	TipoViajeService tipoviajeService;
+	@Autowired
+	CategoriaReservaService categoriareservaservice; 
 	
-	
-	
-   //////////////////////////
+   //terminado-//
 	@GetMapping("/")  //listado de reservas///
 	public String listarReservas(Model model) {
-		model.addAttribute("reservas", reservaService.listarReserva());
-		return "/reserva/listarreserva";
+		model.addAttribute("reservas", reservaService.listarReserva());	
+		return "reserva/listarreserva";
 	}
 
 	@GetMapping("/crear")
 	public String crearReserva(Model model) {
 		model.addAttribute("reserva", new Reserva());
 		model.addAttribute("tipoviajes", tipoviajeService.listarTipoViaje());
+		model.addAttribute("categoriareservas", categoriareservaservice.listarCategoriaReserva());
 		return "/reserva/guardarreserva";
 	}
 	
-	/////////////////////
+	//////Grabar Terminado//////////////
 	
 	@PostMapping("/grabar")
-	public String grabarReserva(@Valid @ModelAttribute Reserva reserva, BindingResult result, Model model,
-			RedirectAttributes attribute) {
-		//model.addAttribute("reservas", reservaService.listarReserva());
-		
+	public String grabarReserva(@Valid @ModelAttribute("reserva") Reserva reserva, BindingResult result, Model model,
+			RedirectAttributes attribute) { 
+	
 		if (result.hasErrors()) {
 			model.addAttribute("tipoviajes", tipoviajeService.listarTipoViaje());
+			model.addAttribute("categoriareservas", categoriareservaservice.listarCategoriaReserva());
 			return "/reserva/guardarreserva";
 		}
 		reservaService.grabarReser(reserva);
 		attribute.addFlashAttribute("success", "Reserva Agregada");
-		return "redirect:/reserva/"; ///evaluar cambio de ruta
-		
+		return "redirect:/reserva/";		
 	}
-
 	
+
 	///terminado editar//
-	@GetMapping("/editar/{id}")
-	public String editaReserva(@PathVariable("id") Integer idRsv, Model model,RedirectAttributes attribute) {
-
-		if (idRsv > 0) {
-				Reserva reserva = reservaService.buscarReser(idRsv);
-			if (reserva == null ) {
-				System.out.println("ID de Reserva  no encontrada");
-				attribute.addFlashAttribute("error", "ID de Reserva no encontrada");
-				return "redirect:/reserva/";
-			}
-		} else {
-			System.out.println("Error con el ID de Reserva");
-			attribute.addFlashAttribute("error", "Error con la ID de Reserva");
-			return "redirect:/reserva/";
-		}
-
+	@GetMapping("/editar/{idRsv}")
+	public String editaReserva(@PathVariable("idRsv") Integer idRsv, Model model,RedirectAttributes attribute) {
 		List<TipoViaje> tipoviajes = tipoviajeService.listarTipoViaje();
+		List<CategoriaReserva> categoriareservas = categoriareservaservice.listarCategoriaReserva();
 		Reserva reserva = reservaService.buscarReser(idRsv);
 		model.addAttribute("reserva", reserva);
 		model.addAttribute("tipoviajes", tipoviajes);
+		model.addAttribute("categoriareservas", categoriareservas);
 		return "/reserva/editarreserva";
 	}
-	
-	
-	
 	
 	//////actualizar reservaterminado//
 
@@ -95,9 +86,11 @@ public class ReservaController {
 	public String actualizarReserva(@Valid @ModelAttribute Reserva reserva, BindingResult result, Model model,
 			RedirectAttributes attribute) {
 		List<TipoViaje> tipoviajes = tipoviajeService.listarTipoViaje();
+		List<CategoriaReserva> categoriareservas = categoriareservaservice.listarCategoriaReserva();
 
 		if (result.hasErrors()) {
 			model.addAttribute("tipoviajes", tipoviajes);
+			model.addAttribute("categoriareservas", categoriareservas);
 			return "/reserva/guardarreserva";
 		}
 		reservaService.actualizarReser(reserva);
@@ -107,8 +100,8 @@ public class ReservaController {
 	
 	//eliminar terminado
 
-	@GetMapping("/eliminar/{id}")
-	public String reservaEliminar(@PathVariable("id") Integer idRsv) {
+	@GetMapping("/eliminar/{idRsv}")
+	public String reservaEliminar(@PathVariable("idRsv") Integer idRsv) {
 		reservaService.eliminarReser(idRsv);
 		return "redirect:/reserva/";
 	}
