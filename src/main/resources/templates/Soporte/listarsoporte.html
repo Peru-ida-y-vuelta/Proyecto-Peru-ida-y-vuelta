@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Listar Soporte</title>
+	<th:block th:insert="fragments/resources"></th:block>
+</head>
+
+<body data-ma-theme="blue">
+	<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Gestionar Soporte</h4>
+				<div class="form-row">
+					<div class="col-m-6">
+						<div class="form-group">
+							<a href="/soporte/nuevo" class="btn btn-primary">Nueva Solicitud</a>
+						</div>
+					</div>
+
+				<!-- 	<div class="col-md-2">
+						<button type="button" data-toggle='modal' data-target="#idModalRegistrar"
+							class='btn btn-success' style="width: 150px">Registrar</button>
+					</div>-->
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Lista de Soporte</h4>
+				<div class="table-responsive">
+					<table id="idtablaSoporte" class="table table-bordered">
+						<thead>
+							<tr>
+								<th style="width: 5%">#</th>
+								<th style="width: 30%">Nombre del Usuario</th>
+								<th style="width: 31%">Detalle del Soporte</th>
+								<th style="width: 7%"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="spt : ${soportes}">
+								<tr>
+									<td th:text="${spt.idSoporte}"></td>
+									<td th:text="${spt.usuario.nombreUsu}"></td>
+									<td th:text="${spt.Detalle}"></td>
+									<td>
+										<a class="btn btn-primary"
+											th:href="@{/soporte/editar/{id}(id=${spt.idSoporte})}">
+											<i class="zmdi zmdi-edit zmdi-hc-fw"></i>
+										</a>
+
+
+										<a class="btn btn-danger" href="#"
+											th:onclick="'eliminarSoporte(' + ${spt.idSoporte} + ')'">
+											<i class="zmdi zmdi-delete zmdi-hc-fw"></i>
+										</a>
+									</td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#idtablaSoporte').DataTable();
+		});
+
+		function eliminarSoporte(id) {
+			swal({
+				title: 'Estas Seguro?',
+				text: 'Se eliminara el Detalle del soporte',
+				type: 'warning',
+				showCancelButton: true,
+				buttonsStyling: false,
+				confirmButtonClass: 'btn btn-danger',
+				confirmButtonText: 'Si,Eliminar!',
+				cancelButtonClass: 'btn btn-secondary',
+				cancelButtonText: 'Cancelar'
+			}).then(function (result) {
+				if (result.value) {
+					$.ajax({
+						url: "/soporte/eliminar/" + id,
+						type: "GET",
+						success: function () {
+							swal("Ok", "Se ha eliminado", "success").then(function () {
+								window.location = "/soporte";
+							});
+						}
+					})
+				}
+			});
+
+		}
+	</script>
+
+
+</body>
+ <style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://i.pinimg.com/originals/e1/00/1e/e1001e86903d5fccba2a7e83a0547bd4.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
+</html>
