@@ -2,21 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Listar Reservas</title>
+<title>Listar Destinos</title>
 <th:block th:insert="fragments/resources"></th:block>
 </head>
-<body data-ma-theme="red">
+<body data-ma-theme="blue">
 	<th:block th:insert="fragments/header"></th:block>
 	<th:block th:insert="fragments/menu"></th:block>
 	<section class="content">
 	
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title">Gestionar Reserva</h4>
+				<h4 class="card-title">Gestionar Destino</h4>
 				<div class="form-row">
 					<div class="col-m-6">
 						<div class="form-group">
-							<a href="/reserva/crear" class="btn btn-primary">Nueva Reserva</a>
+							<a href="/destino/nuevo" class="btn btn-primary">Nuevo Destino</a>
 						</div>
 					</div>
 				</div>
@@ -24,38 +24,30 @@
 		</div>	
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title">Lista de Reservas</h4>
+				<h4 class="card-title">Lista de Destinos</h4>
 				<div class="table-responsive">
-					<table id="idtablaReserva" class="table table-bordered">
+					<table id="idtablaUnidad" class="table table-bordered">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Origen</th>
-								<th>Destino</th>
-								<th>Salida</th>
-								<th>Retorno</th>
-								<th>Clase</th>							
+								<th>Id Destino</th>
+								<th>Codigotv</th>
+								<th>Nplazas</th>
 								
 							</tr>
 						</thead>
 						<tbody>
-							<th:block th:each="reser : ${reservas}">
+							<th:block th:each="des : ${destinos}">
 								<tr>
-									<td th:text="${reser.idRsv}"></td>
-									<td th:text="${reser.tipoviaje.origen}"></td>
-									<td th:text="${reser.tipoviaje.destino}"></td>
-									<td th:text="${reser.salida}"></td>
-									<td th:text="${reser.retorno}"></td>
-									<td th:text="${reser.categoriareserva.clase}"></td>
-									
-									
+									<td th:text="${des.idDestino}"></td>
+									<td th:text="${des.tipoviaje.codigotpv}"></td>
+									<td th:text="${des.plazas}"></td>
 									<td>
-										<a class="btn btn-primary" th:href="@{/reserva/editar/{id}(id=${reser.idRsv})}">
+										<a class="btn btn-primary" th:href="@{/destino/editar/{id}(id=${des.idDestino})}">
 											<i class="zmdi zmdi-edit zmdi-hc-fw"></i>
 										</a>
 									
 									
-										<a class="btn btn-danger" href="#" th:onclick="'eliminarReserva(' + ${reser.idRsv} + ')'">
+										<a class="btn btn-danger" href="#" th:onclick="'eliminarDestino(' + ${des.idDestino} + ')'">
 											<i class="zmdi zmdi-delete zmdi-hc-fw"></i>
 										</a>
 									</td>
@@ -71,13 +63,13 @@
 	
 	<script type="text/javascript">
 		$(document).ready( function () {
-        $('#idtablaReserva').DataTable();
+        $('#idtablaDestino').DataTable();
          } );
 		
-		function eliminarReserva(id){
+		function eliminarDestino(id){
 			swal({
                 title: 'Estas Seguro?',
-                text: '!Se eliminara esta Reserva definitivamente!',
+                text: 'YSe eliminara este Destino definitivamente!',
                 type: 'warning',
                 showCancelButton: true,
                 buttonsStyling: false,
@@ -88,11 +80,11 @@
             }).then(function(result){
             	if(result.value){
 					$.ajax({
-						url: "/reserva/eliminar/" + id,
+						url: "/destino/eliminar/" + id,
 						type: "GET",
 						success: function(){
                 			swal("Ok", "Se ha eliminado", "success").then(function(){
-                				window.location = "/reserva/";
+                				window.location = "/destino";
                             });
                 		}
 					})
@@ -102,15 +94,11 @@
 		}
 	</script>
 </body>
-
-<!-- ESTO SE AGREGO <STYLE></STYLE>  -->
  <style th:fragment="style">
     body{
       height: 100vh;
-      background: url('https://images3.alphacoders.com/150/thumb-1920-150487.jpg') no-repeat center center fixed;
+      background: url('https://images7.alphacoders.com/728/thumb-1920-728218.jpg') no-repeat center center fixed;
       background-size: cover;
     }
 </style>
-
-
 </html>

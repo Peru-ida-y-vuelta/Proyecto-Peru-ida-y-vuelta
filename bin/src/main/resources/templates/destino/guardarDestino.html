@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Crear Destino</title>
+<th:block th:insert="fragments/resources"></th:block>
+</head>
+<body data-ma-theme="red">
+	<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Nuevo Destino</h4>
+				
+				<form id="idRegistrar" action="/destino/crear" method="post" th:object="${destino}">
+					<div class="form-row">
+ 						<div class="col-md-6"> 
+ 							<div class="form-group"> 
+							 <select th:field="*{tipoviaje}" class="form-control"> 
+								  <option th:each="c : ${tipoviajes}" 
+ 								th:value="${c.codigotpv}"
+								th:text="${c.codigotpv}" /> 
+ 							</select> 
+ 							</div> 
+						</div>
+						<div class="col-md-6"> 
+ 							<div class="form-group"> 
+ 								<input type="text" th:field="*{plazas}" class="form-control"
+									placeholder="# de plazas" maxlength="50" name="plazas" id="plazas"> 
+									 <small class="form-text text-danger" th:if="${#fields.hasErrors('plazas')}"
+									th:errors="*{plazas}"></small>
+						</div> 
+ 						</div> 
+						
+					</div>
+					<div class="form-row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Registrar</button>
+								<a href="/destino/" class="btn btn-danger">Cancelar</a>
+							</div>
+						</div>
+					</div>
+					
+					
+				</form>
+			</div>
+		</div>	
+	</section>
+</body>
+
+ <style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://images7.alphacoders.com/728/thumb-1920-728218.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
+
+</html>
+
+

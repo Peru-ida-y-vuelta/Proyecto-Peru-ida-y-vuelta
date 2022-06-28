@@ -1,4 +1,3 @@
-
 CREATE DATABASE proyecto_integrador_2022
     WITH
     OWNER = postgres
@@ -8,24 +7,46 @@ CREATE DATABASE proyecto_integrador_2022
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
-create table tb_tipousuario
+create table tb_tipo_usuario
 (
-	idTipo int primary key GENERATED ALWAYS AS IDENTITY,
-	nombreTipo varchar(20)
+	id_tipo int primary key GENERATED ALWAYS AS IDENTITY,
+	nombre_tipo varchar(20) /*se cambio*/
 );
+
+
 
 create table tb_tipo_viaje
 (
 	codigotv int primary key GENERATED ALWAYS AS IDENTITY,
-	salida varchar(50),
-	destino varchar(50),
-	duracion varchar(10),
-	preciotv decimal
+	origen varchar(50),
+	destino varchar(50)
 );
+
+INSERT INTO public.tb_tipo_viaje (origen,destino)
+	VALUES ('Lima','Trujillo'),
+	       ('Trujillo','Lima'),
+	       ('Arequipa','Lambayeque'),
+	       ('Lambayeque','Piura'),
+	       ('Piura','Tacna'),
+	       ('Tacna','Arequipa');
+
+create table tb_categoria_reserva
+(
+	codigo_ct_reserva int primary key GENERATED ALWAYS AS IDENTITY,
+	clase_ct_reserva varchar(100)
+);
+
+INSERT INTO public.tb_categoria_reserva (clase_ct_reserva)
+	VALUES ('Economica'),
+	       ('Premium'),
+		   ('Ejecutivo'),
+		   ('Turista'),
+		   ('Primera Clase');
+	   
 
 create table tb_viajes
 (
-	idViaje int primary key GENERATED ALWAYS AS IDENTITY,
+	id_viaje int primary key GENERATED ALWAYS AS IDENTITY,
 	codigotv int,
 	nplazas int,
 	foreign key (codigotv)references tb_tipo_viaje(codigotv)
@@ -42,11 +63,25 @@ create table ofertas
 
 create table tb_reservas
 (
-	idReserva int primary key GENERATED ALWAYS AS IDENTITY,
-	fechaReserva varchar(50),
+	id_reserva int primary key GENERATED ALWAYS AS IDENTITY,	
 	codigotv int,
-	foreign key (codigotv)references tb_tipo_viaje(codigotv)
+	foreign key (codigotv)references tb_tipo_viaje(codigotv),
+	fecha_salida date not null,
+	fecha_retorno date not null,	
+	adultos_reserva int default 1,
+	niños_reserva int default 0,
+	codigo_ct_reserva int,
+	foreign key (codigo_ct_reserva)references  tb_categoria_reserva (codigo_ct_reserva)
 );
+
+INSERT INTO public.tb_reservas (codigotv,fecha_salida,fecha_retorno,adultos_reserva,niños_reserva
+								,codigo_ct_reserva )
+	VALUES (1,'2022-06-23','2022-06-30',1,0,1),
+	       (2,'2022-07-23','2022-07-30',2,1,2),
+		   (3,'2022-08-23','2022-08-28',2,1,3),
+		   (4,'2022-09-10','2022-09-20',3,2,4),
+		   (5,'2022-06-28','2022-07-10',2,2,5),
+		   (6,'2022-10-10','2022-10-30',3,1,5);
 
 create table tb_usuario
 (			
@@ -58,7 +93,7 @@ create table tb_usuario
 	email varchar(50) unique,
 	id_tipo int,
 	clave_usu varchar(10),/*se agrego la columna clave*/
-	foreign key (id_tipo)references tb_tipousuario(idTipo)
+	foreign key (id_tipo)references tb_tipo_usuario(id_tipo)
 );
 
 create table tb_reclamos
@@ -109,18 +144,29 @@ create table tb_boleta
 create table tb_detalle_boleta
 (
 	idDetalle int primary key GENERATED ALWAYS AS IDENTITY,
-	idViaje int,
+	id_viaje int,
 	idBoleta int,
 	cantidad int,
 	Precio decimal,
-	foreign key (idViaje)references tb_viajes(idViaje),
+	foreign key (id_viaje)references tb_viajes(id_viaje),
 	foreign key (idBoleta)references tb_boleta(idBoleta)
 );
 
-INSERT INTO public.tb_tipousuario (nombretipo)
+create table tab_oferta
+(
+	idoferta int primary key GENERATED ALWAYS AS IDENTITY,
+	id_usu int,
+	descuento decimal(6,2),
+	foreign key (id_usu)references tb_usuario(id_usu)
+);
+
+INSERT INTO public.tab_oferta(id_usu,descuento)
+	VALUES ('1','100.50');
+
+INSERT INTO public.tb_tipo_usuario (nombre_tipo)
 	VALUES ('Cliente');
 	
-INSERT INTO public.tb_tipousuario (nombretipo)
+INSERT INTO public.tb_tipo_usuario (nombre_tipo)
 	VALUES ('Administrador');
 	
 INSERT INTO public.tb_usuario (nombre_usu,apellido_usu,direccion_usu,telefono,email,id_tipo,clave_usu)
@@ -136,7 +182,21 @@ add telefono varchar(20),
 add num_permiso varchar(20),
 add email varchar(100);	
 
+INSERT INTO public.tb_tipo_viaje(
+	 salida, destino, duracion, preciotv)
+	VALUES ('Lunes', 'Lima','3 dias',150.50);
+	
+INSERT INTO public.tb_tipo_viaje(
+	 salida, destino, duracion, preciotv)
+	VALUES ('martes', 'Chincha','5 dias',200.50);
+	
+INSERT INTO public.tb_tipo_viaje(
+	 salida, destino, duracion, preciotv)
+	VALUES ('jueves', 'Arequipa','7 dias',500.50);
 
+	
 
+select * from tb_reservas;
+select * from tb_tipo_usuario;
 select * from tb_usuario;
 select * from tb_unidades;
