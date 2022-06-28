@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Actualiza Soporte</title>
+<th:block th:insert="fragments/resources"></th:block>
+</head>
+<body data-ma-theme="blue">
+	<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+	
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Editar Soporte</h4>
+
+
+				<form action="/soporte/actualizar" method="post" th:object="${soporte}">
+				    <input type="hidden" th:field="*{idSoporte}">
+					<div class="form-row">
+						
+						
+						<!-- 		<div class="col-md-6">
+							<div class="form-group">
+								<select th:field="*{usuario.idUsu}" class="form-control select2">
+									<option value="-1">Seleccione</option>
+									<option th:each="usuario : ${listarusuario}" 
+										th:value="${usuario.idUsu}"
+										th:text="${usuario.nombreUsu}">
+									</option>
+								</select>
+							</div>
+						</div>
+						-->
+						
+								<div class="col-md-6"> 
+ 							<div class="form-group"> 
+							 <select th:field="*{usuario}" class="form-control">
+							 <option value="-1">Seleccione</option> 
+								  <option th:each="u : ${listarusuario}" 
+ 								th:value="${u.idUsu}"
+								th:text="${u.nombreUsu}" /> 
+ 							</select> 
+ 							</div> 
+						</div>
+						
+						
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" th:field="*{Detalle}" class="form-control"
+									placeholder="Detalle" maxlength="100">
+									<i class="form-group__bar"></i>
+			                        <div class = "form-text text-danger" th:if= "${#fields.hasErrors('Detalle')}" th:errors="*{Detalle}" ></div>
+
+							</div>
+						</div>
+					
+					
+						
+					
+					</div>
+					
+					
+					<div class="form-row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Actualizar</button>
+								<a href="/soporte" class="btn btn-danger">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				
+				
+				</form>
+				
+			</div>
+			
+		</div>	
+		
+	
+	</section>
+</body>
+<style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://i.pinimg.com/originals/e1/00/1e/e1001e86903d5fccba2a7e83a0547bd4.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
+</html>
