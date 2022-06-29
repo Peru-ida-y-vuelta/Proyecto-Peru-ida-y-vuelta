@@ -8,7 +8,7 @@ public class WsProyectoIntegradorApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WsProyectoIntegradorApplication.class, args);
-		System.err.println("Termino.......");
+		System.err.println("-------Termino de Compilar.......");
 	}
 
 }
