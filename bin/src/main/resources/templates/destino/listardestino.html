@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Listar Destinos</title>
+<th:block th:insert="fragments/resources"></th:block>
+</head>
+<body data-ma-theme="blue">
+	<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+	
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Gestionar Destino</h4>
+				<div class="form-row">
+					<div class="col-m-6">
+						<div class="form-group">
+							<a href="/destino/nuevo" class="btn btn-primary">Nuevo Destino</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Lista de Destinos</h4>
+				<div class="table-responsive">
+					<table id="idtablaUnidad" class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Id Destino</th>
+								<th>Codigotv</th>
+								<th>Nplazas</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="des : ${destinos}">
+								<tr>
+									<td th:text="${des.idDestino}"></td>
+									<td th:text="${des.tipoviaje.codigotpv}"></td>
+									<td th:text="${des.plazas}"></td>
+									<td>
+										<a class="btn btn-primary" th:href="@{/destino/editar/{id}(id=${des.idDestino})}">
+											<i class="zmdi zmdi-edit zmdi-hc-fw"></i>
+										</a>
+									
+									
+										<a class="btn btn-danger" href="#" th:onclick="'eliminarDestino(' + ${des.idDestino} + ')'">
+											<i class="zmdi zmdi-delete zmdi-hc-fw"></i>
+										</a>
+									</td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>	
+	</section>
+	
+	
+	<script type="text/javascript">
+		$(document).ready( function () {
+        $('#idtablaDestino').DataTable();
+         } );
+		
+		function eliminarDestino(id){
+			swal({
+                title: 'Estas Seguro?',
+                text: 'YSe eliminara este Destino definitivamente!',
+                type: 'warning',
+                showCancelButton: true,
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-danger',
+                confirmButtonText: 'Si,Eliminar!',
+                cancelButtonClass: 'btn btn-secondary',
+                cancelButtonText: 'Cancelar'
+            }).then(function(result){
+            	if(result.value){
+					$.ajax({
+						url: "/destino/eliminar/" + id,
+						type: "GET",
+						success: function(){
+                			swal("Ok", "Se ha eliminado", "success").then(function(){
+                				window.location = "/destino";
+                            });
+                		}
+					})
+            	}
+			});
+
+		}
+	</script>
+</body>
+ <style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://images7.alphacoders.com/728/thumb-1920-728218.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
+</html>

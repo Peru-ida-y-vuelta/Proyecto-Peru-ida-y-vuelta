@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Error 404</title>
+<th:block th:insert="fragments/resources"></th:block>
+</head>
+<body data-ma-theme="turquoise">
+	<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+	
+	<div class="container text-center py-3">
+		<div class="panel bg-light">
+			<div class="panel-heading">
+				<h3 class="panel-title text-danger">
+					<span th:text="${error}"></span>-<span th:text="${status}"></span>
+				</h3>
+			</div>
+		</div>
+		<div class="panel-body">
+			<img alt="Imagen no encontrada" th:src="@{/img/404.jpg}" width="300" height="300">
+			<br>
+			<h4>La página solicitada no existe!</h4>
+			<br>
+			<a class="btn btn-success" href="/Inicio">&laquo;Regresar</a>
+		</div>
+	</div>
+	</section>
+	
+</body>
+</html>

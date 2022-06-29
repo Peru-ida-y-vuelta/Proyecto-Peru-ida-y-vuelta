@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!--<meta charset="ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<title>CRUD Usuario</title>
+<th:block th:insert="fragments/resources"></th:block>
+</head>
+<body data-ma-theme="red">
+	<section class="content">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Nuevo Usuario</h4>
+				<form id="idRegistrar" action="/usuarios/grabar" method="post"
+					th:object="${usuario}">
+					<div class="form-row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" th:field="*{nombreUsu}" class="form-control"
+									placeholder="Nombres" maxlength="50"> <i
+									class="form-group__bar"></i>
+								<div class="form-text text-danger"
+									th:if="${#fields.hasErrors('nombreUsu')}"
+									th:errors="*{nombreUsu}"></div>
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" th:field="*{apellidoUsu}"
+									class="form-control" placeholder="Apellidos" maxlength="50">
+								<i class="form-group__bar"></i>
+								<div class="form-text text-danger"
+									th:if="${#fields.hasErrors('apellidoUsu')}"
+									th:errors="*{apellidoUsu}"></div>
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" th:field="*{direccionUsu}"
+									class="form-control" placeholder="Direccion" maxlength="50">
+								<i class="form-group__bar"></i>
+								<div class="form-text text-danger"
+									th:if="${#fields.hasErrors('direccionUsu')}"
+									th:errors="*{direccionUsu}"></div>
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" th:field="*{telefono}" class="form-control"
+									placeholder="Teléfono" maxlength="50"> <i
+									class="form-group__bar"></i>
+								<div class="form-text text-danger"
+									th:if="${#fields.hasErrors('telefono')}"
+									th:errors="*{telefono}"></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" th:field="*{email}" class="form-control"
+									placeholder="Email" maxlength="50"> <i
+									class="form-group__bar"></i>
+								<div class="form-text text-danger"
+									th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+								<small class="form-text text-danger" th:if="${validar != null}"
+									th:text="${validar}"></small>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" th:field="*{clave}" class="form-control"
+									placeholder="password" maxlength="50"> <i
+									class="form-group__bar"></i>
+								<div class="form-text text-danger"
+									th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}"></div>
+
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Registrar</button>
+								<a href="/" class="btn btn-danger">Cancelar</a>
+							</div>
+						</div>
+					</div>
+
+
+				</form>
+
+			</div>
+
+		</div>
+
+
+	</section>
+</body>
+
+
+</html>

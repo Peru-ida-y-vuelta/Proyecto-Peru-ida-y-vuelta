@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Perú ida y vuelta</title>
+<th:block th:insert="fragments/resources"></th:block>
+</head>
+<body class="body">
+ <div class="login-container">
+          <div class="login-info-container">
+            <h1 class="title">Viaja con Perú ida y vuelta</h1>
+            <form action="/login/validar" method="post" th:object="${usuario}" class="inputs-container">
+            
+         
+                
+                <input type="email" class="input" placeholder="Ingrese su correo" th:field=*{email}>
+                
+                <input type="password" class="input" placeholder="Ingresa tu Contraseña" th:field=*{clave}>
+                
+                
+                
+                <button class="bu">Ingresar</button>
+                <p style="color: white;">No tienes Cuenta ? <span class="span"><a href="/usuarios/cargar">Crear</a></span></p>
+            </form>
+            
+            <div class="alert alert-danger" th:if="${mensaje} != null"
+			th:text="${mensaje}"></div>
+            
+          </div>
+            <img class="image-container" src="../img/logo.png" alt="">
+      </div>
+</body>
+</html>

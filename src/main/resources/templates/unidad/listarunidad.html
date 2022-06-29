@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Listar Unidades</title>
+<th:block th:insert="fragments/resources"></th:block>
+</style>
+
+</head>
+
+
+<body data-ma-theme="red">
+	<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+	
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Gestionar Unidad</h4>
+				<div class="form-row">
+					<div class="col-m-6">
+						<div class="form-group">
+							<a href="/unidad/crear" class="btn btn-primary">Nueva Unidad</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Lista de Unidades</h4>
+				<div class="table-responsive">
+					<table id="idtablaUnidad" class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nombre del Chofer</th>
+								<th>Detalle de la Unidad</th>
+								<th>Placa de la Unidad</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="uni : ${unidades}">
+								<tr>
+									<td th:text="${uni.idUni}"></td>
+									<td th:text="${uni.chofer.nombreChofer}"></td>
+									<td th:text="${uni.nomUni}"></td>
+									<td th:text="${uni.placa}"></td>
+									<td>
+										<a class="btn btn-primary" th:href="@{/unidad/editar/{id}(id=${uni.idUni})}">
+											<i class="zmdi zmdi-edit zmdi-hc-fw"></i>
+										</a>
+									
+									
+										<a class="btn btn-danger" href="#" th:onclick="'eliminarUnidad(' + ${uni.idUni} + ')'">
+											<i class="zmdi zmdi-delete zmdi-hc-fw"></i>
+										</a>
+									</td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>	
+	</section>
+	
+	
+	<script type="text/javascript">
+		$(document).ready( function () {
+        $('#idtablaUnidad').DataTable();
+         } );
+		
+		function eliminarUnidad(id){
+			swal({
+                title: 'Estas Seguro?',
+                text: 'YSe eliminara esta Unidad definitivamente!',
+                type: 'warning',
+                showCancelButton: true,
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-danger',
+                confirmButtonText: 'Si,Eliminar!',
+                cancelButtonClass: 'btn btn-secondary',
+                cancelButtonText: 'Cancelar'
+            }).then(function(result){
+            	if(result.value){
+					$.ajax({
+						url: "/unidad/eliminar/" + id,
+						type: "GET",
+						success: function(){
+                			swal("Ok", "Se ha eliminado", "success").then(function(){
+                				window.location = "/unidad/";
+                            });
+                		}
+					})
+            	}
+			});
+
+		}
+	</script>
+</body>
+ <style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://img.freepik.com/foto-gratis/autobus-enlace-negro-vuelta-carretera-polonia-trafico-transporte-publico-moderno-unidad-verano-alquiler-vehiculos-autocar-viaje-vacaciones-viaje-vacaciones-recreacion-movimiento-paseo-urbano_250132-1244.jpg?w=1380') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
+</html>
