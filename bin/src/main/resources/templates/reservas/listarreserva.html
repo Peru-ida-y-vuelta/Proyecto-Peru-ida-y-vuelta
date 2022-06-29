@@ -5,7 +5,7 @@
 <title>Listar Reservas</title>
 <th:block th:insert="fragments/resources"></th:block>
 </head>
-<body data-ma-theme="red">
+<body data-ma-theme="blue">
 	<th:block th:insert="fragments/header"></th:block>
 	<th:block th:insert="fragments/menu"></th:block>
 	<section class="content">
@@ -16,7 +16,7 @@
 				<div class="form-row">
 					<div class="col-m-6">
 						<div class="form-group">
-							<a href="/reserva/crear" class="btn btn-primary">Nueva Reserva</a>
+							<a href="/reservas/nuevo" class="btn btn-primary">Nueva Reserva</a>
 						</div>
 					</div>
 				</div>
@@ -50,7 +50,7 @@
 									
 									
 									<td>
-										<a class="btn btn-primary" th:href="@{/reserva/editar/{id}(id=${reser.idRsv})}">
+										<a class="btn btn-primary" th:href="@{/reservas/editar/{idRsv}(idRsv=${reser.idRsv})}">
 											<i class="zmdi zmdi-edit zmdi-hc-fw"></i>
 										</a>
 									
@@ -88,11 +88,11 @@
             }).then(function(result){
             	if(result.value){
 					$.ajax({
-						url: "/reserva/eliminar/" + id,
+						url: "/reservas/eliminar/" + id,
 						type: "GET",
 						success: function(){
                 			swal("Ok", "Se ha eliminado", "success").then(function(){
-                				window.location = "/reserva/";
+                				window.location = "/reservas/";
                             });
                 		}
 					})
