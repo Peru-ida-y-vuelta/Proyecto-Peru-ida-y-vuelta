@@ -23,7 +23,7 @@ public class UsuarioControlador {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	@GetMapping
+	@GetMapping("/")
     public ModelAndView listaUsuario() {
   	return new ModelAndView("usuario/listarusuario").addObject("usuario",usuarioService.listarUsuario());
 	}
@@ -32,7 +32,7 @@ public class UsuarioControlador {
 	@GetMapping("/nuevo")
     public String nuevoUsuario(Model model){
     	model.addAttribute("usuario", new Usuario());
-    	return"usuario/guardarUsuario";
+    	return"usuario/guardarusuario";
     }
 	
 	
@@ -46,7 +46,7 @@ public class UsuarioControlador {
 	@PostMapping("/crear")
     public String registrarUsuario(@Valid Usuario usuario, Errors error) {//BindingResult bindingResult
     	if(error.hasErrors()) {
-    		return"usuario/guardarUsuario";
+    		return"usuario/guardarusuario";
     	}
     	usuarioService.guardar(usuario);
     	return"redirect:/usuario";
@@ -68,7 +68,7 @@ public class UsuarioControlador {
 	    	    	return "usuario/editarusuario";
 	    	}
 	    	usuarioService.actualizar(usu);
-	    	return"redirect:/usuario";
+	    	return"redirect:/usuario/";
 	 }
 	
 }

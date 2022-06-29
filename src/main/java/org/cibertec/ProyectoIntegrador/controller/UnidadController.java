@@ -32,14 +32,14 @@ public class UnidadController {
 	@GetMapping("/")
 	public String listarUnidades(Model model) {
 		model.addAttribute("unidades", uniService.listarUnidad());
-		return "/unidad/listarunidad";
+		return "unidad/listarunidad";
 	}
 
 	@GetMapping("/crear")
 	public String crearUnidad(Model model) {
 		model.addAttribute("unidad", new Unidad());
 		model.addAttribute("choferes", choService.listarChofer());
-		return "/unidad/guardarunidad";
+		return "unidad/guardarunidad";
 	}
 
 	@PostMapping("/grabar")
@@ -49,13 +49,13 @@ public class UnidadController {
 
 		if (result.hasErrors()) {
 			model.addAttribute("choferes", choService.listarChofer());
-			return "/unidad/guardarunidad";
+			return "unidad/guardarunidad";
 		}
 		if (uniService.validaPlaca(unidad.getPlaca()) != null) {
 			model.addAttribute("validar", "Esta placa ya existe");
 			System.out.println("Placa existe");
 			model.addAttribute("choferes", choferes);
-			return "/unidad/guardarunidad";
+			return "unidad/guardarunidad";
 		}
 		uniService.grabarUni(unidad);
 		attribute.addFlashAttribute("success", "Unidad Agregado");
@@ -82,7 +82,7 @@ public class UnidadController {
 		Unidad unidad = uniService.buscarUni(idUnidad);
 		model.addAttribute("unidad", unidad);
 		model.addAttribute("choferes", choferes);
-		return "/unidad/editarunidad";
+		return "unidad/editarunidad";
 	}
 
 	@PostMapping("/actualizar")
@@ -92,7 +92,7 @@ public class UnidadController {
 
 		if (result.hasErrors()) {
 			model.addAttribute("choferes", choferes);
-			return "/unidad/guardarunidad";
+			return "unidad/guardarunidad";
 		}
 		uniService.actualizarUni(unidad);
 		attribute.addFlashAttribute("warning", "Cliente Actualizado");

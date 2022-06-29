@@ -42,13 +42,14 @@ public class ReservaController {
 		model.addAttribute("reservas", reservaService.listarReserva());	
 		return "reserva/listarreserva";
 	}
-
+	
+	
 	@GetMapping("/crear")
 	public String crearReserva(Model model) {
 		model.addAttribute("reserva", new Reserva());
 		model.addAttribute("tipoviajes", tipoviajeService.listarTipoViaje());
 		model.addAttribute("categoriareservas", categoriareservaservice.listarCategoriaReserva());
-		return "/reserva/guardarreserva";
+		return "reserva/guardarreserva";
 	}
 	
 	//////Grabar Terminado//////////////
@@ -60,13 +61,12 @@ public class ReservaController {
 		if (result.hasErrors()) {
 			model.addAttribute("tipoviajes", tipoviajeService.listarTipoViaje());
 			model.addAttribute("categoriareservas", categoriareservaservice.listarCategoriaReserva());
-			return "/reserva/guardarreserva";
+			return "reserva/guardarreserva";
 		}
 		reservaService.grabarReser(reserva);
 		attribute.addFlashAttribute("success", "Reserva Agregada");
 		return "redirect:/reserva/";		
 	}
-	
 
 	///terminado editar//
 	@GetMapping("/editar/{idRsv}")
@@ -77,7 +77,7 @@ public class ReservaController {
 		model.addAttribute("reserva", reserva);
 		model.addAttribute("tipoviajes", tipoviajes);
 		model.addAttribute("categoriareservas", categoriareservas);
-		return "/reserva/editarreserva";
+		return "reserva/editarreserva";
 	}
 	
 	//////actualizar reservaterminado//
@@ -91,12 +91,22 @@ public class ReservaController {
 		if (result.hasErrors()) {
 			model.addAttribute("tipoviajes", tipoviajes);
 			model.addAttribute("categoriareservas", categoriareservas);
-			return "/reserva/guardarreserva";
+			return "reserva/guardarreserva";
 		}
 		reservaService.actualizarReser(reserva);
 		attribute.addFlashAttribute("warning", "Reserva Actualizada");
 		return "redirect:/reserva/";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//eliminar terminado
 

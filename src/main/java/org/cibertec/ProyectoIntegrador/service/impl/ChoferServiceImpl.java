@@ -23,25 +23,29 @@ public class ChoferServiceImpl implements ChoferService {
 	}
 
 	@Override
+	@Transactional
 	public Chofer guardar(Chofer chofer) {
 		return choferRepositorio.save(chofer);
 	}
 
 	@Override
+	@Transactional
 	public Chofer actualizar(Chofer chofer) {
 		return choferRepositorio.save(chofer);
 	}
 
 	@Override
+	@Transactional
 	public void eliminar(int id) {
 		choferRepositorio.deleteById(id);
 		
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Chofer buscarChofer(int id) {
 		
-		return choferRepositorio.findById(id).get();
+		return choferRepositorio.findById(id).orElse(null);
 	}
 
 	

@@ -23,7 +23,7 @@ public class SoporteController {
 	SoporteServiceImpl SoporteService;
 	@Autowired
 	UsuarioService usuarioService;
-	@GetMapping
+	@GetMapping("/")
 	public ModelAndView listarSoporte() {
 		return new ModelAndView("soporte/listarsoporte").addObject("soportes", SoporteService.listarSoporte());
 	}

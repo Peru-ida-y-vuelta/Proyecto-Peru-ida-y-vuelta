@@ -25,7 +25,8 @@ public class LoginController{
 		model.addAttribute("usuario",new Usuario());
 		return "Login";
 	}
-	@PostMapping("/login/validar")
+	
+	@PostMapping("login/validar")
 	public String validarLogin(@ModelAttribute Usuario usuario,Model model) 
 	{
 		System.out.println("Enviado : " + usuario);
@@ -41,22 +42,25 @@ public class LoginController{
 		}
 		return "dashboard";
 	}
-	@GetMapping("/usuarios/cargar")
+	
+	
+	
+	@GetMapping("usuarios/cargar")
     public String nuevoUsuario(Model model){
     	model.addAttribute("usuario", new Usuario());
-    	return"usuarios/guardarUsuario";
+    	return"usuarios/guardarusuario";
     }
 	
-	@PostMapping("/usuarios/grabar")
+	@PostMapping("usuarios/grabar")
     public String registrarUsuario(@Valid Usuario usuario, Errors error,Model model) {
     	if(error.hasErrors()) {
-    		return"usuarios/guardarUsuario";
+    		return"usuarios/guardarusuario";
     	}
     	
     	if (logService.ValidarCorreo(usuario.getEmail()) != null) {
 			model.addAttribute("validar", "Esta correo ya existe");
 			System.out.println("Correo existe");
-			return "usuarios/guardarUsuario";
+			return "usuarios/guardarusuario";
 		}
     	System.out.println(usuario);
     	
