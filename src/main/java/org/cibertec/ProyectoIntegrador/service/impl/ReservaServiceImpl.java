@@ -13,38 +13,41 @@ import org.springframework.transaction.annotation.Transactional;
 public class ReservaServiceImpl implements ReservaService{
 	
 	@Autowired
-	private ReservaRepository reservaRepository;
+	private ReservaRepository reserRepo;
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Reserva> listarReservas() {
+	public List<Reserva> listarReserva() {
 		
-		return  (List<Reserva>) reservaRepository.findAll();	
+		return reserRepo.findAll();	
 	}
 
 	@Override
 	@Transactional
-	public Reserva registrar(Reserva reserva) {	
-		return reservaRepository.save(reserva);
+	public Reserva grabarReser(Reserva obj) {
+		
+		return reserRepo.save(obj);
 	}
 
 	@Override
 	@Transactional
-	public Reserva actualizar(Reserva reserva) {	
-		return reservaRepository.save(reserva);
+	public Reserva actualizarReser(Reserva obj) {
+		
+		return reserRepo.save(obj);
 	}
 
 	@Override
 	@Transactional
-	public void eliminar(int id) {		
-		reservaRepository.deleteById(id);
+	public void eliminarReser(int id) {
+		
+		reserRepo.deleteById(id);
 		
 	}
 	
 	@Override
 	 @Transactional(readOnly = true)
-	public Reserva obtenerPorId(int id) {
-		return reservaRepository.findById(id).get();
+	public Reserva buscarReser(int id) {
+		return reserRepo.findById(id).orElse(null);
 	}
 	
 }

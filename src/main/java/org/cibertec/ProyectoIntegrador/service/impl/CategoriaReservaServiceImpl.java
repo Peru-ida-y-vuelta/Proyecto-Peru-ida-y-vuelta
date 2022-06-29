@@ -7,48 +7,42 @@ import org.cibertec.ProyectoIntegrador.repository.CategoriaReservaRepository;
 import org.cibertec.ProyectoIntegrador.service.CategoriaReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CategoriaReservaServiceImpl implements CategoriaReservaService{
 	
 	@Autowired
-	private CategoriaReservaRepository categoriareservaRepository;
+	private CategoriaReservaRepository categoriareservarepo;
 
 	@Override
-	@Transactional(readOnly = true)
-	public List<CategoriaReserva> listarCategoriaReservas() {
+	public List<CategoriaReserva> listarCategoriaReserva() {
 		
-		return ( List<CategoriaReserva>) categoriareservaRepository.findAll();
+		return categoriareservarepo.findAll();
 	}
 
 	@Override
-	@Transactional
-	public CategoriaReserva registrar(CategoriaReserva categoriareserva) {	
-		return categoriareservaRepository.save(categoriareserva);
+	public CategoriaReserva grabar(CategoriaReserva categoriareserva) {
+		
+		return categoriareservarepo.save(categoriareserva);
 	}
-	
-	
 
 	@Override
-	@Transactional
 	public CategoriaReserva actualizar(CategoriaReserva categoriareserva) {
 		
-		return categoriareservaRepository.save(categoriareserva);
+		return categoriareservarepo.save(categoriareserva);
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(int id) {
 		
-		categoriareservaRepository.deleteById(id);
+		categoriareservarepo.deleteById(id);
 		
 	}
 
 	@Override
-	@Transactional(readOnly = true)
-	public CategoriaReserva obtenerPorId(int id) {	
-		return categoriareservaRepository.findById(id).get();
+	public CategoriaReserva buscarCategoriaReserva(int id) {
+		
+		return categoriareservarepo.findById(id).get();
 	}
 	
 }

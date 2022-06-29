@@ -5,14 +5,9 @@ import java.util.List;
 import org.cibertec.ProyectoIntegrador.entidades.Reserva;
 
 public interface ReservaService {
-		
-	List<Reserva> listarReservas(); 
-
-	 Reserva registrar(Reserva reserva);
-
-	 Reserva actualizar(Reserva reserva);
-
-	 Reserva obtenerPorId(int id);
-
-	 void eliminar(int id);
+	public List<Reserva> listarReserva();
+	public Reserva grabarReser(Reserva obj);
+	public Reserva actualizarReser(Reserva obj);
+	public void eliminarReser(int id);
+	public Reserva buscarReser(int id);
 }

@@ -1,6 +1,7 @@
 package org.cibertec.ProyectoIntegrador.entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,5 +41,24 @@ public class TipoViaje implements Serializable {
 	@Column(name = "destino")
 	private String  destino;
 	
+	
+	/*@NotEmpty
+	@Column(name = "duracion")
+	private String  duraciontpv;
+	
+	@Column(name = "preciotv", precision = 10, scale = 2)
+	private BigDecimal preciotpv;  */
+	
+	/*public TipoViaje get() {
+		
+		return TipoViaje
+				.builder()
+				.tipoviaje(1)
+				.salidatpv("Lunes")
+				.destinotpv("Lima")
+				.duraciontpv("5 Días")
+				.preciotpv(null)
+				.build();	
+	}*/
 
 }
