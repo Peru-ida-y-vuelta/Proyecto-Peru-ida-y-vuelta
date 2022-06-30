@@ -9,6 +9,7 @@ import org.cibertec.ProyectoIntegrador.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,19 +28,16 @@ public class LoginController{
 	}
 	
 	@PostMapping("login/validar")
-	public String validarLogin(@ModelAttribute Usuario usuario,Model model) 
+	public String validarLogin( Usuario usuario,Errors error,Model model) 
 	{
-		System.out.println("Enviado : " + usuario);
-		
 		Usuario u = logService.ValidarLogin(usuario.getEmail(), usuario.getClave());
 		
-		System.out.println(u);
-		
 		if(u == null) {
-			
-			model.addAttribute("mensaje","Usuario o clave incorrecta");
-			return "login";
+			model.addAttribute("usuario",new Usuario());
+			model.addAttribute("mensaje", "Usuario o contraseña equivocada");
+			return "Login";
 		}
+		
 		return "dashboard";
 	}
 	
@@ -50,6 +48,7 @@ public class LoginController{
     	model.addAttribute("usuario", new Usuario());
     	return"usuarios/guardarusuario";
     }
+	
 	
 	@PostMapping("usuarios/grabar")
     public String registrarUsuario(@Valid Usuario usuario, Errors error,Model model) {

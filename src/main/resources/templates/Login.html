@@ -11,12 +11,15 @@
             <h1 class="title">Viaja con Perú ida y vuelta</h1>
             <form action="/login/validar" method="post" th:object="${usuario}" class="inputs-container">
             
-         
+        
                 
-                <input type="email" class="input" placeholder="Ingrese su correo" th:field=*{email}>
+                <input type="email" class="input" placeholder="Ingrese su correo" th:field=*{email} required>
                 
-                <input type="password" class="input" placeholder="Ingresa tu Contraseña" th:field=*{clave}>
-                
+               
+									
+						
+                <input type="password" class="input" placeholder="Ingresa tu Contraseña" th:field=*{clave} required>
+               
                 
                 
                 <button class="bu" id="pruebab">Ingresar</button>

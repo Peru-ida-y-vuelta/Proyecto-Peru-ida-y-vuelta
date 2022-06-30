@@ -40,7 +40,7 @@ public class UsuarioControlador {
 	@GetMapping("/eliminar/{idUsu}")
     public String UsuarioEliminar(@ModelAttribute("idUsu") int idUsu) {
     	 usuarioService.eliminar(idUsu);
-    	return "redirect:/usuario";
+    	return "redirect:/usuario/";
     }
 	
 	@PostMapping("/crear")
@@ -49,7 +49,7 @@ public class UsuarioControlador {
     		return"usuario/guardarusuario";
     	}
     	usuarioService.guardar(usuario);
-    	return"redirect:/usuario";
+    	return"redirect:/usuario/";
     }
 	
 	@GetMapping("/editar/{idUsu}")

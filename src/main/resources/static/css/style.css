@@ -100,11 +100,13 @@
     align-items: center;
 }
 
+
 .input, .bu {
     width: 90%;
     height: 3.125rem;
     font-size: 1em;
 }
+
 
 .input {
     padding-left: 20px;
