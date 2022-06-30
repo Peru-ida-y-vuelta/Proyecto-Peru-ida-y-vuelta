@@ -16,11 +16,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/reservas")
+@RequestMapping("/reserva")
 public class ReservaController {
 	
 	
@@ -32,10 +31,10 @@ public class ReservaController {
 	CategoriaReservaService categoriareservaService; 
 	
    //terminado listado //
-	@GetMapping("/") 
+	@GetMapping 
 	public String listarReservas(Model model) {
-		model.addAttribute("reservas", reservaService.listarReservas());	
-		return "reservas/listarreserva";
+		model.addAttribute("reserva", reservaService.listarReservas());	
+		return "reserva/listarreserva";
 	}
 
 	
@@ -45,22 +44,24 @@ public class ReservaController {
 		model.addAttribute("reserva", new Reserva());
 		model.addAttribute("tipoviajes", tipoviajeService.listarTipoViaje());
 		model.addAttribute("categoriareservas", categoriareservaService.listarCategoriaReservas());
-		return "/reservas/guardarreserva";
+		return "reserva/guardarreserva";
 	}
 		
 	
 	//////Grabar o crear Terminado/
 	@PostMapping("/crear") 
-	public String CrearReserva(@Valid @ModelAttribute("reserva") Reserva reserva, BindingResult result, Model model,			RedirectAttributes attribute) { 
+	public String CrearReserva(@Valid @ModelAttribute("reserva") Reserva reserva, BindingResult result, Model model,
+			RedirectAttributes attribute) { 
 	
 		if (result.hasErrors()) {
 			model.addAttribute("tipoviajes", tipoviajeService.listarTipoViaje());
 			model.addAttribute("categoriareservas", categoriareservaService.listarCategoriaReservas());
-			return "/reservas/guardarreserva";
+			return "reserva/guardarreserva";
 		}
 		reservaService.registrar(reserva);
 		attribute.addFlashAttribute("success", "Reserva Agregada");
-		return "redirect:/reservas/";		
+		return "redirect:/reserva";		
+		
 	}
 	
 	///terminado editar//
@@ -69,7 +70,7 @@ public class ReservaController {
 		model.addAttribute("reserva", reservaService.obtenerPorId(idRsv));
 		model.addAttribute("tipoviajes", tipoviajeService.listarTipoViaje());
 		model.addAttribute("categoriareservas", categoriareservaService.listarCategoriaReservas());
-		return "/reservas/editarreserva";
+		return "reserva/editarreserva";
 	} 
 			
 	
@@ -81,11 +82,11 @@ public class ReservaController {
 		if (result.hasErrors()) {
 			model.addAttribute("tipoviajes", tipoviajeService.listarTipoViaje());
 			model.addAttribute("categoriareservas", categoriareservaService.listarCategoriaReservas());
-			return "/reservas/guardarreserva";
+			return "reserva/guardarreserva";
 		}
 		reservaService.registrar(reserva);
 		attribute.addFlashAttribute("warning", "Reserva Actualizada");
-		return "redirect:/reservas/";
+		return "redirect:/reserva";
 	}
 	
 	
@@ -94,6 +95,6 @@ public class ReservaController {
 	@GetMapping("/eliminar/{idRsv}")
 	public String reservaEliminar(@ModelAttribute("idRsv") int idRsv) {
 		reservaService.eliminar(idRsv);
-		return "redirect:/reservas/";
+		return "redirect:/reserva";
 	}
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.cibertec.ProyectoIntegrador.entidades.Reserva;
 
 public interface ReservaService {
-		
+	 /////	
 	List<Reserva> listarReservas(); 
 
 	 Reserva registrar(Reserva reserva);

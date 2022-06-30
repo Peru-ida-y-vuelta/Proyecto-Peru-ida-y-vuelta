@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Editar Reclamos</title>
+<th:block th:insert="fragments/resources"></th:block>
+</head>
+<body>
+<body data-ma-theme="blue">
+	<th:block th:insert="fragments/header"></th:block>
+	<th:block th:insert="fragments/menu"></th:block>
+	<section class="content">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Editar Reclamo</h4>
+
+
+				<form action="/libro/actualizar" method="post" th:object="${libro}">
+				    <input type="hidden" th:field="*{idlibro}">
+				    
+				    
+				 	<div class="form-row">						    					
+					   <div class="col-md-6">
+						<div class="form-group">
+						<label for="establecimiento"><FONT COLOR="black"> Establecimiento </FONT></label>
+							<select  id="establecimiento" class="form-control" th:field="*{establecimiento}">
+							 <option th:value="-1" th:text="Seleccione..." ></option> 
+								  <option th:each="estable : ${establecimientos}" 
+ 								th:value="${estable.idEstab}"
+								th:text="${estable.ciudad}" /> 					 
+ 							</select> 
+ 							<div "form-text text-danger" th:errorclass="'form-control alert-danger'"  th:if= "${#fields.hasErrors('establecimiento')}" 
+ 							th:errors="*{establecimiento}" ></div>
+ 							
+						</div>
+						</div>
+				
+		      	    
+		      	     <div class="col-md-4">
+		      	    <div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> Nombre </FONT></label>
+				        <input type="text"  required="true" class="form-control" id="nombre" 
+				            placeholder="Ingrese Nombre" th:field="*{nombre}" maxlength="50" name="nombre">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('nombre')}" 
+ 							th:errors="*{nombre}" ></div>							
+		      	    </div>
+		      	    </div>	
+		      	    
+		      	    <div class="col-md-4">
+		      	    <div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> Apellido Paterno </FONT></label>
+				        <input type="text"  required="true" class="form-control" id="apellidopa" 
+				            placeholder="Ingrese Apellido Paterno" th:field="*{apellidopa}" maxlength="50" name="apellidopa">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('apellidopa')}" 
+ 							th:errors="*{apellidopa}" ></div>							
+		      	    </div>
+		      	    </div>	
+		      	    
+		      	     <div class="col-md-4">
+		      	    <div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> Apellido Materno </FONT></label>
+				        <input type="text"  required="true" class="form-control" id="apellidoma" 
+				            placeholder="Ingrese Apellido Materno" th:field="*{apellidoma}" maxlength="50" name="apellidoma">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('apellidoma')}" 
+ 							th:errors="*{apellidoma}" ></div>							
+		      	    </div>
+		      	    </div>	
+		      	    
+		      	    
+		      	       <div class="col-md-4">
+		      	    <div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> Dirección </FONT></label>
+				        <input type="text"  required="true" class="form-control" id="direccion" 
+				            placeholder="Ingrese Dirección" th:field="*{direccion}" maxlength="50" name="direccion">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('direccion')}" 
+ 							th:errors="*{direccion}" ></div>							
+		      	    </div>
+		      	    </div>	
+		      	    
+		      	    
+		      	    
+		      	       <div class="col-md-4">
+		      	    <div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> DNI </FONT></label>
+				        <input type="text"  required="true" class="form-control" id="dni" 
+				            placeholder="Ingrese N° DNI" th:field="*{dni}" maxlength="50" name="dni">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('dni')}" 
+ 							th:errors="*{dni}" ></div>							
+		      	    </div>
+		      	    </div>	
+		      	    
+		      	    
+		      	     <div class="col-md-4">
+		      	    <div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> Telefono </FONT></label>
+				        <input type="text"  required="true" class="form-control" id="telefono" 
+				            placeholder="Ingrese N° Telefono" th:field="*{telefono}" maxlength="50" name="telefono">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('telefono')}" 
+ 							th:errors="*{telefono}" ></div>							
+		      	    </div>
+		      	    </div>	
+		      	    
+		      	    
+		      	     <div class="col-md-4">
+		      	    <div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> Email </FONT></label>
+				        <input type="email"  required="true" class="form-control" id="email" 
+				            placeholder="Ingrese email" th:field="*{email}" maxlength="50" name="email">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('email')}" 
+ 							th:errors="*{email}" ></div>							
+		      	    </div>
+		      	    </div>	
+		      	    
+		      	    
+		      	     <div class="col-md-4">
+		      	    <div class="form-group">
+				        <label for="inputAddress4"><FONT COLOR="black"> Edad </FONT></label>
+				        <input type="number"  required="true" class="form-control" id="edad" 
+				            placeholder="Ingrese su edad" th:field="*{edad}" maxlength="50" name="edad">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('edad')}" 
+ 							th:errors="*{edad}" ></div>							
+		      	    </div>
+		      	    </div>	
+		      	    
+		      	    
+		      	    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Observaciones</label>
+                        <textarea type="text" class="form-control" th:field="*{observaciones}"
+                            id="exampleFormControlTextarea1" rows="3"></textarea>
+                            
+                            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('observaciones')}" 
+ 							th:errors="*{observaciones}" ></div>		
+                            
+                    </div>
+		      	    	
+							
+					</div>
+					<br/>
+					<br/>
+					<div class="form-row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Actualizar</button>
+								<a href="/libro" class="btn btn-danger">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				
+				
+				</form>
+				
+			</div>
+			
+		</div>	
+		
+	
+	</section>
+</body>
+</body>
+
+<!-- ESTO SE AGREGO <STYLE></STYLE>  -->
+ <style th:fragment="style">
+    body{
+      height: 100vh;
+      background: url('https://images3.alphacoders.com/150/thumb-1920-150487.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+</style>
+
+
+</html>

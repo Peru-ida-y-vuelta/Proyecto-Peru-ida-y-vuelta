@@ -23,6 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping("/api/categoriareservas")
 public class CategoriaReservaRestController {
 	
+	//
 	@Autowired
 	private CategoriaReservaService categoriareservaService;
 	
