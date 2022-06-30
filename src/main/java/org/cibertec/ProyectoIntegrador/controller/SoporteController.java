@@ -41,14 +41,14 @@ public class SoporteController {
     		return"soporte/registrarsoporte";
     	}
     	SoporteService.Insertar(soporte);
-    	return"redirect:/soporte";
+    	return"redirect:/soporte/";
     }
     
     
     @GetMapping("/eliminar/{idSoporte}")
     public String clienteEliminar(@ModelAttribute("idSoporte") int idSoporte) {
     	SoporteService.eliminar(idSoporte);
-    	return "redirect:/soporte";
+    	return "redirect:/soporte/";
     }
     
     @GetMapping("/editar/{idSoporte}")
@@ -65,7 +65,7 @@ public class SoporteController {
     	    	return "soporte/editarsoporte";
     	}
     	SoporteService.Actualizar(soporte);
-    	return"redirect:/soporte";
+    	return"redirect:/soporte/";
     }
 
     
