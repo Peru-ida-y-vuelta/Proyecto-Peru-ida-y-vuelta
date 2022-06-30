@@ -1,0 +1,42 @@
+create table tb_establecimiento
+(	
+	id_estab int primary key GENERATED ALWAYS AS IDENTITY,
+    ciudad varchar(50)
+);
+	
+	INSERT INTO public.tb_establecimiento (ciudad)
+	VALUES ('Lima'),
+	       ('Trujillo'),
+	       ('Arequipa'),
+	       ('Lambayeque'),
+	       ('Piura'),
+	       ('Tacna');
+	
+select*from tb_establecimiento;
+	
+create table tb_libroreclamo
+(
+	id_libro int primary key GENERATED ALWAYS AS IDENTITY,
+	id_estab int,
+	foreign key (id_estab)references tb_establecimiento(id_estab),
+	nombre_usu varchar(50),
+	apellidopa_usu varchar(50),
+	apellidoma_usu varchar(50),
+	direccion_usu varchar(50),
+	dni_usu varchar(50),
+	telefono_usu varchar(50),
+	email_usu varchar(50),
+	edad_usu int,
+	observaciones_usu varchar(255)	
+);
+
+
+INSERT INTO public.tb_libroreclamo (id_estab,nombre_usu,apellidopa_usu,apellidoma_usu,
+									direccion_usu,dni_usu,telefono_usu,
+									email_usu,edad_usu,observaciones_usu)
+	VALUES (1, 'Jose','Diaz','Prado','calle lima 122','12345678', '989012768','jose123@gmail.com',18,'Mal servicio'),
+	       (2, 'Luis','Gomez','Lopez','calle oro 891','80345678', '919012768','luis123@gmail.com',28,'Inconforme'),
+		   (3, 'Marcos','Torres','Diaz','calle libia 333','77345678', '949012768','marcos123@gmail.com',30,'Pésimo vuelo');
+		 
+		   
+select*from tb_libroreclamo;
