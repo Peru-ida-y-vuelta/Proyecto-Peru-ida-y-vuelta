@@ -16,7 +16,7 @@
 				<div class="form-row">
 					<div class="col-m-6">
 						<div class="form-group">
-							<a href="/reserva/crear" class="btn btn-primary">Nueva Reserva</a>
+							<a href="/reserva/nuevo" class="btn btn-primary">Nueva Reserva</a>
 						</div>
 					</div>
 				</div>
@@ -39,7 +39,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<th:block th:each="reser : ${reservas}">
+							<th:block th:each="reser : ${reserva}">
 								<tr>
 									<td th:text="${reser.idRsv}"></td>
 									<td th:text="${reser.tipoviaje.origen}"></td>
@@ -50,7 +50,7 @@
 									
 									
 									<td>
-										<a class="btn btn-primary" th:href="@{/reserva/editar/{id}(id=${reser.idRsv})}">
+										<a class="btn btn-primary" th:href="@{/reserva/editar/{idRsv}(idRsv=${reser.idRsv})}">
 											<i class="zmdi zmdi-edit zmdi-hc-fw"></i>
 										</a>
 									

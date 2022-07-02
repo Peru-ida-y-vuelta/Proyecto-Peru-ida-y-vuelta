@@ -3,9 +3,9 @@ package org.cibertec.ProyectoIntegrador.rest;
 import java.util.List;
 
 import org.cibertec.ProyectoIntegrador.entidades.CategoriaReserva;
-import org.cibertec.ProyectoIntegrador.entidades.TipoViaje;
+import org.cibertec.ProyectoIntegrador.entidades.Establecimiento;
 import org.cibertec.ProyectoIntegrador.service.CategoriaReservaService;
-import org.cibertec.ProyectoIntegrador.service.TipoViajeService;
+import org.cibertec.ProyectoIntegrador.service.EstablecimientoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class ClaseRest {
+public class EstablecimientoRest {
 
 	@Autowired
-	private CategoriaReservaService service;
+	private EstablecimientoService service;
 	
-	@GetMapping("listar/Categoria")
-	public List<CategoriaReserva>listar(){
-		return service.listarCategoriaReserva();
+	@GetMapping("listar/establecimiento")
+	public List<Establecimiento>listar(){
+		return service.listarEstablecimientos();
 	}
-	@PostMapping("grabar/Categoria")
-	public void grabar(@RequestBody CategoriaReserva cate) {
-		 service.grabar(cate);
+	@PostMapping("grabar/establecimiento")
+	public void grabar(@RequestBody Establecimiento est) {
+		 service.registrar(est);
 	}
 }

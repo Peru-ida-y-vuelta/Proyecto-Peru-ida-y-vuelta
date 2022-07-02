@@ -8,46 +8,43 @@ import org.cibertec.ProyectoIntegrador.service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+//
 @Service
 public class ReservaServiceImpl implements ReservaService{
 	
 	@Autowired
-	private ReservaRepository reserRepo;
+	private ReservaRepository reservaRepository;
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Reserva> listarReserva() {
+	public List<Reserva> listarReservas() {
 		
-		return reserRepo.findAll();	
+		return  (List<Reserva>) reservaRepository.findAll();	
 	}
 
 	@Override
 	@Transactional
-	public Reserva grabarReser(Reserva obj) {
-		
-		return reserRepo.save(obj);
+	public Reserva registrar(Reserva reserva) {	
+		return reservaRepository.save(reserva);
 	}
 
 	@Override
 	@Transactional
-	public Reserva actualizarReser(Reserva obj) {
-		
-		return reserRepo.save(obj);
+	public Reserva actualizar(Reserva reserva) {	
+		return reservaRepository.save(reserva);
 	}
 
 	@Override
 	@Transactional
-	public void eliminarReser(int id) {
-		
-		reserRepo.deleteById(id);
+	public void eliminar(int id) {		
+		reservaRepository.deleteById(id);
 		
 	}
 	
 	@Override
 	 @Transactional(readOnly = true)
-	public Reserva buscarReser(int id) {
-		return reserRepo.findById(id).orElse(null);
+	public Reserva obtenerPorId(int id) {
+		return reservaRepository.findById(id).get();
 	}
 	
 }
