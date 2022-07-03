@@ -129,9 +129,4 @@ public class Usuario {
 				+ ", direccionUsu=" + direccionUsu + ", telefono=" + telefono + ", email=" + email + ", tipo=" + tipo
 				+ ", clave=" + clave + "]";
 	}
-
-	public Usuario get() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
