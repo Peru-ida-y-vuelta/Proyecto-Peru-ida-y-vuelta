@@ -23,8 +23,7 @@
 					
 							<div class="col-md-6"> 
  							<div class="form-group"> 
-							 <select th:field="*{usuario}" class="form-control">
-							 <option value="-1">Seleccione</option> 
+							 <select th:field="*{usuario}" class="form-control"> 
 								  <option th:each="u : ${listarusuario}" 
  								th:value="${u.idUsu}"
 								th:text="${u.nombreUsu}" /> 
@@ -32,16 +31,20 @@
  							</div> 
 						</div>
 					
-						<div class="col-md-6">
-							<div class="form-group">
-								<input type="number" th:field="*{descuento}" class="form-control" th:errorclass="'form-control alert-danger'"
-									placeholder="Decuento">
-									<i class="form-group__bar"></i>
-                                     <div class = "form-text text-danger" th:if= "${#fields.hasErrors('descuento')}" th:errors="*{descuento}" ></div>
-							</div>
+						
+											<div class="col-md-6">
+								    <div class="form-group">
+				        <input pattern="^\d*(\.\d{0,2})?$"  required="true" class="form-control" id="descuento" 
+				            placeholder="Ingrese Decuento" th:field="*{descuento}" name="descuento">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('descuento')}" 
+ 							th:errors="*{descuento}" ></div>							
+		      	    </div>
+							
+							
+							
+							
 						</div>
-						
-						
 						
 			
 					</div>
