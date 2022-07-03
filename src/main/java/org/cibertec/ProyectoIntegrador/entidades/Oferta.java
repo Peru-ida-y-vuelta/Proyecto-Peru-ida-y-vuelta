@@ -24,7 +24,7 @@ public class Oferta {
 	@JoinColumn(name = "id_usu")
 	private Usuario usuario;
 	@Column(name="descuento")
-
+	@NotEmpty (message = "Ingrese oferta")
 	private double descuento;
 	
 }
