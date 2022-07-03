@@ -1,0 +1,349 @@
+[33mcommit 76548a903f3a2167732cfdbd46a521ae046403db[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Sat Jul 2 17:32:55 2022 -0500
+
+    actualizacion
+
+[33mcommit 4e32e79aacba8bee57330f1b1c0838fa578e9cb8[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Thu Jun 30 16:23:53 2022 -0500
+
+    heroku funciona
+
+[33mcommit 596b8fc0f05eae530ad2adfa8580baa62eae323b[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Thu Jun 30 15:55:37 2022 -0500
+
+    listo heroku
+
+[33mcommit e0ed56939a2c6078c46bdecbbfc18005ae18f48d[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Wed Jun 29 13:01:28 2022 -0500
+
+    funciona heroku
+    
+    falta arreglar el login para heroku y agregar la compra
+
+[33mcommit 92739d8ec3c96eed9ee3e7cf8854b3402d5ca1b1[m
+Merge: daafa7a 039bd47
+Author: shionel <90944410+shionel@users.noreply.github.com>
+Date:   Wed Jun 29 00:45:39 2022 -0500
+
+    Merge pull request #22 from Peru-ida-y-vuelta/HUAMAN
+    
+    create package
+
+[33mcommit 039bd47f36a9d81ca48bc81eaf359f2f6a65e412[m
+Merge: 30df8ac daafa7a
+Author: shionel <90944410+shionel@users.noreply.github.com>
+Date:   Wed Jun 29 00:42:03 2022 -0500
+
+    Merge branch 'main' into HUAMAN
+
+[33mcommit daafa7af76d8ed6091a48b0c59c3a5d21c3b7730[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Tue Jun 28 20:09:38 2022 -0500
+
+    volviendo un paso atras
+
+[33mcommit 90563d0aa49f0207c29699805852d28d89ec2d0b[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Tue Jun 28 19:53:08 2022 -0500
+
+    heroku
+
+[33mcommit 0f0c6fe5b400d24b116ae0adb5b6653cda3296dd[m
+Merge: f9b8432 b9017ac
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Tue Jun 28 17:58:20 2022 -0500
+
+    Merge pull request #21 from Peru-ida-y-vuelta/PIYV-9-reserva
+    
+    Kevin Paredes Commmit Pruebas Heroku por última vez
+
+[33mcommit b9017ac5056e700bccd360ac967ad3795225eb67[m
+Author: KevinParedesG1 <kevin_cangry_14@hotmail.com>
+Date:   Tue Jun 28 17:14:16 2022 -0500
+
+    Kevin Paredes Commmit Pruebas Heroku por última vez
+
+[33mcommit f9b84323d1462b540f3752f43e5b631454317aa9[m
+Merge: fb8d460 14f0af4
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Sun Jun 26 21:07:31 2022 -0500
+
+    Merge pull request #20 from Peru-ida-y-vuelta/Tarea_Publicar_oferta
+    
+    listar funcionando
+
+[33mcommit 14f0af46e8fa27daf6e03c8d2960a99dee60ca98[m[33m ([m[1;31morigin/Tarea_Publicar_oferta[m[33m)[m
+Merge: 7fa6227 fb8d460
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Sun Jun 26 21:07:23 2022 -0500
+
+    Merge branch 'main' into Tarea_Publicar_oferta
+
+[33mcommit fb8d4605eac6c166d808d01dbdc84945cdb93f97[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Sun Jun 26 21:03:38 2022 -0500
+
+    soporte
+
+[33mcommit ccbb1e3532330faba7dd622164f6c3abe9e78d08[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Sun Jun 26 20:14:51 2022 -0500
+
+    listo
+    
+    l
+
+[33mcommit 10fa5091045dd682d20d479531d706dbc296ec9f[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Sun Jun 26 20:06:32 2022 -0500
+
+    cambios en reserva y bd
+
+[33mcommit ffd8e3b93d426c215d15d91ea4cefcd827e87d1f[m
+Merge: fb35ed6 ac3d0d0
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Sun Jun 26 19:44:38 2022 -0500
+
+    Merge pull request #16 from Peru-ida-y-vuelta/Origin/Tarea_Reserva
+    
+    Kevin Paredes último Commit
+
+[33mcommit ac3d0d05f97f817b00c409958e1d6ae06411189c[m[33m ([m[1;31morigin/Origin/Tarea_Reserva[m[33m)[m
+Merge: 7dfc968 fb35ed6
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Sun Jun 26 19:44:32 2022 -0500
+
+    Merge branch 'main' into Origin/Tarea_Reserva
+
+[33mcommit 7dfc968b546b66f023867a2fffd530693542a068[m
+Author: KevinParedesGuarniz <geminis_15_2011@hotmail.com>
+Date:   Sun Jun 26 19:05:33 2022 -0500
+
+    Kevin Paredes último Commit
+
+[33mcommit fb35ed698cbdab83027d88773365a0f018c86885[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Sun Jun 26 17:39:28 2022 -0500
+
+    Update Usuario.java
+
+[33mcommit c006c608749ff009a4cd4e377221313e38fbad4d[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Sun Jun 26 16:47:00 2022 -0500
+
+    apis agregadas
+    
+    tipo viaje,
+    tipo usuario
+
+[33mcommit 7fa62271b288d78b733a8010be0ae4a839d11cc8[m
+Author: Pierre20211 <i201822720@cibertec.edu.pe>
+Date:   Sun Jun 26 13:31:29 2022 -0500
+
+    listar funcionando
+
+[33mcommit ff48c30f2d28e010109cadc3b175a70fef397ce4[m
+Merge: 931b284 f30dbd6
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Fri Jun 24 01:22:15 2022 -0500
+
+    Merge branch 'main' of https://github.com/Peru-ida-y-vuelta/Proyecto-Peru-ida-y-vuelta
+
+[33mcommit 931b284eea1402b6ad719e7c4ff1eb235a5e5a2f[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Fri Jun 24 01:21:24 2022 -0500
+
+    viajes sin validar
+
+[33mcommit f30dbd6729388a363961b5ddd35d203042a110f0[m
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Thu Jun 23 21:03:36 2022 -0500
+
+    Delete RegistroDestinoCRUD
+
+[33mcommit 71ec3e611f23b21b87f2e84faabc31e09acd697a[m
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Thu Jun 23 21:03:28 2022 -0500
+
+    Delete Destinohtml
+
+[33mcommit 6fcb61cbb82f10aef86913425a62c6b02c6ef449[m
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Thu Jun 23 21:03:21 2022 -0500
+
+    Delete Destino
+
+[33mcommit 1599ac231a62d4d8bc782f9da1769aac25d2c1a7[m
+Merge: b9051e9 5149d00
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Thu Jun 23 20:07:53 2022 -0500
+
+    Merge branch 'main' of https://github.com/Peru-ida-y-vuelta/Proyecto-Peru-ida-y-vuelta
+
+[33mcommit b9051e9356ad35ff208fab007a2bf86adae38ede[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Thu Jun 23 20:07:49 2022 -0500
+
+    estilos
+    
+    se agregaron estilos al login
+
+[33mcommit 5149d003b99170cab71af4b7aef347f06848a171[m
+Merge: c3a971a f903e77
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Thu Jun 23 18:08:05 2022 -0500
+
+    Merge pull request #14 from Peru-ida-y-vuelta/Tarea_Registro_Destino
+    
+    Tarea registro destino
+
+[33mcommit f903e77da35fb5de46f1f5199006ab68e1715281[m
+Author: ThiancrisGray01 <82485106+ThiancrisGray01@users.noreply.github.com>
+Date:   Thu Jun 23 15:41:46 2022 -0500
+
+    Destinohtml
+
+[33mcommit fefd77abfe521a547669e8a75f64e90d5582fb4e[m
+Author: ThiancrisGray01 <82485106+ThiancrisGray01@users.noreply.github.com>
+Date:   Thu Jun 23 15:38:54 2022 -0500
+
+    Create RegistroDestinoCRUD
+
+[33mcommit 7985372186bc1433ca7ebad107bcf2629aaeae81[m
+Author: ThiancrisGray01 <82485106+ThiancrisGray01@users.noreply.github.com>
+Date:   Thu Jun 23 15:18:46 2022 -0500
+
+    Destino
+    
+    Entidad Destino
+
+[33mcommit c3a971aa0e2cb2089ec95a78fc14f0a026686bd1[m
+Merge: f849312 deac0ad
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Thu Jun 23 13:28:37 2022 -0500
+
+    Merge pull request #13 from Peru-ida-y-vuelta/Origin/Tarea_Reserva
+    
+    PULL KEVIN PAREDES-RESERVA
+
+[33mcommit deac0ad565a3e15dca5eeae90750b464b6ffe046[m
+Author: KevinParedesGuarniz <geminis_15_2011@hotmail.com>
+Date:   Thu Jun 23 01:01:13 2022 -0500
+
+    PULL KEVIN PAREDES-RESERVA
+
+[33mcommit f849312b30473192652a0397731f74d98ca87b7a[m[33m ([m[1;31morigin/PIYV-9-reserva-de-viaje[m[33m)[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Fri Jun 17 20:10:15 2022 -0500
+
+    ultimos mensajes
+    
+    mensajes al hacer cambios en unidades
+
+[33mcommit c92614b7c77b87652357827231ff687381c0e9e1[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Fri Jun 17 18:41:15 2022 -0500
+
+    unidades validades y paginas 404 y 400 implementadas
+    
+    solo fatarian los mensajes a usuarios
+
+[33mcommit 692d80d2de813e1c0351bbb0f3466c3744602be7[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Fri Jun 10 10:30:30 2022 -0500
+
+    CRUD usuarios
+    
+    se agrego el crud de usuarios funcional y con validacion, se actualizo la BD
+
+[33mcommit c7f28168526eb60b08e384e4d226d6cc70f8be75[m
+Author: yeah291 <82481330+yeah291@users.noreply.github.com>
+Date:   Thu Jun 2 17:12:52 2022 -0500
+
+    Add files via upload
+
+[33mcommit 3b97eb9909c7802760f60436d79f86ba38785074[m
+Author: yeah291 <82481330+yeah291@users.noreply.github.com>
+Date:   Thu Jun 2 17:12:05 2022 -0500
+
+    Add files via upload
+
+[33mcommit f90ed8a2a7593e59cc621d38376bb9ebdb7f9046[m
+Author: yeah291 <82481330+yeah291@users.noreply.github.com>
+Date:   Thu Jun 2 17:11:39 2022 -0500
+
+    Add files via upload
+
+[33mcommit 9e93028a570fff43e7027b1b835ecaa06f135dd9[m
+Author: yeah291 <82481330+yeah291@users.noreply.github.com>
+Date:   Thu Jun 2 17:11:11 2022 -0500
+
+    Add files via upload
+
+[33mcommit ff4c07576b804a496b2d67251e3ac7b9bd0d9ba3[m
+Author: yeah291 <82481330+yeah291@users.noreply.github.com>
+Date:   Thu Jun 2 17:10:14 2022 -0500
+
+    Add files via upload
+
+[33mcommit 62a70f21a98808d1fc9505fce2c45d4a715b4816[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Thu Jun 2 14:14:36 2022 -0500
+
+    login ,crear usuarios y listar unidades
+    
+    proyecto funcional sin validaciones
+
+[33mcommit 9dc99256185c3482a66722945aedf8652e0068b6[m
+Author: Diego Alonso Norabuena Rojas <i201810564@cibertec.edu.pe>
+Date:   Thu Jun 2 10:21:30 2022 -0500
+
+    CRUD Chofer
+    
+    Crud funcional con diseño y validado
+
+[33mcommit 30df8ace9fba52b1aae33cdf324f6aaba5129dff[m
+Author: shionel <shionel.franco@gmail.com>
+Date:   Thu Jun 2 02:22:21 2022 -0500
+
+    create package
+
+[33mcommit 99c320c13143388cc4dd13514b1bb3df332ef11c[m[33m ([m[1;31morigin/Tarea_Registro_Personal[m[33m)[m
+Author: Norabuena Rojas Diego Alonso <sdiego-2000@hotmail.com>
+Date:   Tue May 17 10:45:03 2022 -0500
+
+    Estructura
+    
+    Se agregaron los packetes para empezar a trabajar.
+
+[33mcommit b009da0ab47cceeaae4ed9b68c780a179ab28107[m
+Author: Norabuena Rojas Diego Alonso <sdiego-2000@hotmail.com>
+Date:   Tue May 17 10:14:44 2022 -0500
+
+    cambio de lugar de la BD
+    
+    se cambio la BD a una carpeta dentro del proyecto
+
+[33mcommit 60b238a79d591a9e136a68c805017d14a0095df3[m
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Mon May 16 20:16:38 2022 -0500
+
+    Agregar la Base de Datos
+    
+    se agrego el script de la BD para facilitar su obtención a los miembros del equipo
+
+[33mcommit b571b627f00f33fdcc58ea7c1bf8f0c587683a72[m
+Author: sdiego0 <103972311+sdiego0@users.noreply.github.com>
+Date:   Mon May 16 19:42:07 2022 -0500
+
+    Update application.properties
+
+[33mcommit 26cc16801ead44ee109d7e70db02739a7c7d86e4[m
+Author: Norabuena Rojas Diego <i201810564@cibertec.edu.pe>
+Date:   Sat May 14 18:48:39 2022 -0500
+
+    Se agrega el proyecto
