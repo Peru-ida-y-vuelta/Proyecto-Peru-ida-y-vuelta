@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
 import lombok.Data;
 
@@ -21,14 +20,11 @@ public class Oferta {
 	@Column(name="idoferta")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idOferta;
-	
 	@ManyToOne
 	@JoinColumn(name = "id_usu")
 	private Usuario usuario;
-	
-	
 	@Column(name="descuento")
-	@NotEmpty (message = "Ingrese oferta")
+
 	private double descuento;
 	
 }

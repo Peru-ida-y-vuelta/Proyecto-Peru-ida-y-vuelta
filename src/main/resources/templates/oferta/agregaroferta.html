@@ -29,15 +29,24 @@
 								th:text="${u.nombreUsu}" /> 
  							</select> 
  							</div> 
-						</div>		
-			<div class="col-md-6"> 
- 							<div class="form-group"> 
- 								<input type="text" th:field="*{descuento}" class="form-control"
-									placeholder="Ingrese el descuento"  name="descuento" id="descuento"> 
-									 <small class="form-text text-danger" th:if="${#fields.hasErrors('descuento')}"
-									th:errors="*{descuento}"></small>
-						</div> 
- 						</div> 
+						</div>
+					
+						
+											<div class="col-md-6">
+								    <div class="form-group">
+				        <input pattern="^\d*(\.\d{0,2})?$"  required="true" class="form-control" id="descuento" 
+				            placeholder="Ingrese Decuento" th:field="*{descuento}" name="descuento">			          									 
+				            <div "form-text text-danger" th:errorclass="'form-control alert-danger'" 
+				             th:if= "${#fields.hasErrors('descuento')}" 
+ 							th:errors="*{descuento}" ></div>							
+		      	    </div>
+							
+							
+							
+							
+						</div>
+						
+			
 					</div>
 					<div class="form-row">
 						<div class="col-md-12">

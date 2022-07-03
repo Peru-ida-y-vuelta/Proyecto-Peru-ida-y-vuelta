@@ -81,13 +81,13 @@
 		
 		function eliminarOferta(idOferta){
 			swal({
-                title: 'Are you sure?',
-                text: 'You will not be able to recover this imaginary file!',
+                title: 'Estas seguro?',
+                text: 'No podras recuperar este archivo',
                 type: 'warning',
                 showCancelButton: true,
                 buttonsStyling: false,
                 confirmButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Yes, delete it!',
+                confirmButtonText: 'Si, Eliminar esta oferta!',
                 cancelButtonClass: 'btn btn-secondary'
             }).then(function(result){
             	if(result.value){
@@ -96,7 +96,7 @@
 						type: "GET",
 						success: function(){
                 			swal("Ok", "Se ha eliminado", "success").then(function(){
-                				window.location = "/oferta/";
+                				window.location = "/oferta";
                             });
                 		}
 					})

@@ -19,13 +19,12 @@ import org.springframework.validation.Errors;
 @Controller
 @RequestMapping("/oferta")
 public class OfertaController {
-
 	@Autowired
 	OfertaService OfertaService;
 	@Autowired
 	UsuarioService usuarioService;
 	
-	@GetMapping("/")
+	@GetMapping
 	public ModelAndView listarOferta() {
 		return new ModelAndView("oferta/listaroferta").addObject("ofertas", OfertaService.listarOferta());
 	}
@@ -43,7 +42,7 @@ public class OfertaController {
     		return"oferta/agregaroferta";
     	}
     	OfertaService.agregar(oferta);
-    	return"redirect:/oferta/";
+    	return"redirect:/oferta";
     }
     
     @GetMapping("/eliminar/{idOferta}")
@@ -67,7 +66,7 @@ public class OfertaController {
     	    	return "oferta/editaroferta";
     	}
     	OfertaService.editar(oferta);
-    	return"redirect:/oferta/";
+    	return"redirect:/oferta";
     }
     
 	
