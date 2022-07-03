@@ -32,7 +32,7 @@ public class OfertaController {
     @GetMapping("/nuevo")
     public String nuevoSoporte(Model model){
     	model.addAttribute("oferta", new Oferta());
-    	model.addAttribute("listaroferta",usuarioService.listarUsuario());
+    	model.addAttribute("listarusuario",usuarioService.listarUsuario());
     	return"oferta/agregaroferta";
     }
     
@@ -56,7 +56,7 @@ public class OfertaController {
     public String editarOferta(Model model, @ModelAttribute("idOferta") int idOferta) {
         model.addAttribute("oferta",OfertaService.buscarOferta(idOferta));	
         model.addAttribute("listarusuario",usuarioService.listarUsuario());
-    	return "soporte/editaroferta";
+    	return "oferta/editaroferta";
     }
     
     @PostMapping("/actualizar")
